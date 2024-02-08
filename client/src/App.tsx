@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
-import AuthPage from './components/pages/AuthPage';
+import LoginPage from './components/pages/LoginPage';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
 import Root from './components/ui/Root';
-import CatsPage from './components/pages/CatsPage';
-import FavoritesPage from './components/pages/FavoritesPage';
-import AuthErrorDialog from './components/ui/AuthErrorDialog';
-import EditDialog from './components/ui/EditDialog';
 import Loader from './components/hocs/Loader';
+import AdminPage from './components/pages/AdminPage';
+import ManagerPage from './components/pages/ManagerPage';
+import CalculatorPage from './components/pages/CalculatorPage';
 import PrivateRouter from './components/hocs/PrivateRouter';
+import ContactPage from './components/pages/ContactPage';
+import PricePage from './components/pages/PricePage';
+import ServicePage from './components/pages/ServicePage';
 
 function App(): JSX.Element {
   const user = useAppSelector((state) => state.auth.user);
@@ -28,34 +30,42 @@ function App(): JSX.Element {
       children: [
         {
           path: '/',
-          element: <MainPage />,
+          element: <MainPage/>,
+        },
+        {
+          path: '/loginPage',
+          element: <LoginPage/>,
+        },
+        {
+          path: '/calculatorPage',
+          element: <CalculatorPage/>,
+        },
+        {
+          path: '/contactPage',
+          element: <ContactPage/>,
+        },
+        {
+          path: '/pricePage',
+          element: <PricePage/>,
+        },
+        {
+          path: '/servicePage',
+          element: <ServicePage/>,
         },
         {
           element: <PrivateRouter isAllowed={user.status === 'logged'} />,
           children: [
             {
-              path: '/cats',
-              element: <CatsPage />,
+              path: '/adminPage',
+              element: <AdminPage/>,
             },
             {
-              path: '/favorites',
-              element: <FavoritesPage />,
+              path: '/managerPage',
+              element: <ManagerPage />,
             },
           ],
         },
-        {
-          element: <PrivateRouter isAllowed={user.status === 'guest'} />,
-          children: [
-            {
-              path: '/signup',
-              element: <AuthPage />,
-            },
-            {
-              path: '/login',
-              element: <AuthPage />,
-            },
-          ],
-        },
+        
       ],
     },
   ]);
@@ -63,7 +73,6 @@ function App(): JSX.Element {
   return (
     <Loader isLoading={user.status === 'pending'}>
       <RouterProvider router={routes} />
-      <AuthErrorDialog /> 
     </Loader>
   );
 }
