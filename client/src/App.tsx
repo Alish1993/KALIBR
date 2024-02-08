@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import MainPage from './components/pages/MainPage';
 
 import LoginPage from './components/pages/LoginPage';
@@ -15,6 +16,7 @@ import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
 
+
 function App(): JSX.Element {
 
 
@@ -28,6 +30,9 @@ function App(): JSX.Element {
 
           element: <MainPage/>,
         },
+
+  return <RouterProvider router={routes} />;
+
         {
           path: '/loginPage',
           element: <LoginPage/>,
@@ -73,6 +78,7 @@ function App(): JSX.Element {
 
 
   );
+
 }
 
 export default App;
