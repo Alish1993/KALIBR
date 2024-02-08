@@ -34,7 +34,6 @@ export default function NavBar(): JSX.Element {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -55,7 +54,7 @@ export default function NavBar(): JSX.Element {
               textDecoration: 'none',
             }}
           >
-            LOGO
+           KALIBR
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -159,4 +158,3 @@ export default function NavBar(): JSX.Element {
     </AppBar>
   );
 }
-
