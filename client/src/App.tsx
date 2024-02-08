@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 
 import LoginPage from './components/pages/LoginPage';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { checkUserThunk } from './redux/slices/auth/authThunks';
+
 import Root from './components/ui/Root';
 import Loader from './components/hocs/Loader';
 import AdminPage from './components/pages/AdminPage';
@@ -17,13 +16,7 @@ import ServicePage from './components/pages/ServicePage';
 
 
 function App(): JSX.Element {
-  const user = useAppSelector((state) => state.auth.user);
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    void dispatch(checkUserThunk());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const routes = createBrowserRouter([
     {
@@ -75,10 +68,10 @@ function App(): JSX.Element {
   ]);
 
   return (
-    <Loader isLoading={user.status === 'pending'}>
+   
       <RouterProvider router={routes} />
 
-    </Loader>
+
   );
 }
 
