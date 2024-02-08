@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import MainPage from './components/pages/MainPage';
 
 import LoginPage from './components/pages/LoginPage';
@@ -16,14 +17,8 @@ import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
 
-function App(): JSX.Element {
-  const user = useAppSelector((state) => state.auth.user);
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    void dispatch(checkUserThunk());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+function App(): JSX.Element {
 
   const routes = createBrowserRouter([
     {
@@ -35,6 +30,9 @@ function App(): JSX.Element {
 
           element: <MainPage/>,
         },
+
+  return <RouterProvider router={routes} />;
+
         {
           path: '/loginPage',
           element: <LoginPage/>,
@@ -75,11 +73,12 @@ function App(): JSX.Element {
   ]);
 
   return (
-    <Loader isLoading={user.status === 'pending'}>
+  
       <RouterProvider router={routes} />
 
-    </Loader>
+
   );
+
 }
 
 export default App;
