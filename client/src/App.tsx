@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
+
 import LoginPage from './components/pages/LoginPage';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
@@ -13,6 +14,7 @@ import PrivateRouter from './components/hocs/PrivateRouter';
 import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
+
 
 function App(): JSX.Element {
   const user = useAppSelector((state) => state.auth.user);
@@ -30,6 +32,7 @@ function App(): JSX.Element {
       children: [
         {
           path: '/',
+
           element: <MainPage/>,
         },
         {
@@ -66,6 +69,7 @@ function App(): JSX.Element {
           ],
         },
         
+
       ],
     },
   ]);
@@ -73,6 +77,7 @@ function App(): JSX.Element {
   return (
     <Loader isLoading={user.status === 'pending'}>
       <RouterProvider router={routes} />
+
     </Loader>
   );
 }
