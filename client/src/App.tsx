@@ -23,7 +23,7 @@ function App(): JSX.Element {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
 
-export default function App(): JSX.Element {
+
   const routes = createBrowserRouter([
     {
       path: '/',
