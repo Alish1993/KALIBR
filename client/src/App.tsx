@@ -14,7 +14,7 @@ import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   // const user = useAppSelector((state) => state.auth.user);
   // const dispatch = useAppDispatch();
 
@@ -73,6 +73,6 @@ function App(): JSX.Element {
   return (
     // <Loader isLoading={user.status === 'pending'}>
       <RouterProvider router={routes} />
-    {/* </Loader> */}
+    /* </Loader> */
   );
 }
