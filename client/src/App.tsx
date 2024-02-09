@@ -14,7 +14,7 @@ import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   // const user = useAppSelector((state) => state.auth.user);
   // const dispatch = useAppDispatch();
 
@@ -22,7 +22,6 @@ function App(): JSX.Element {
   //   void dispatch(checkUserThunk());
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
-
 
   const routes = createBrowserRouter([
     {
@@ -35,23 +34,23 @@ function App(): JSX.Element {
         },
         {
           path: '/loginPage',
-          element: <LoginPage/>,
+          element: <LoginPage />,
         },
         {
           path: '/calculatorPage',
-          element: <CalculatorPage/>,
+          element: <CalculatorPage />,
         },
         {
           path: '/contactPage',
-          element: <ContactPage/>,
+          element: <ContactPage />,
         },
         {
           path: '/pricePage',
-          element: <PricePage/>,
+          element: <PricePage />,
         },
         {
           path: '/servicePage',
-          element: <ServicePage/>,
+          element: <ServicePage />,
         },
         // {
         //   element: <PrivateRouter isAllowed={user.status === 'logged'} />,
@@ -66,13 +65,8 @@ function App(): JSX.Element {
         //     },
         //   ],
         // },
-      
       ],
     },
   ]);
-  return (
-    // <Loader isLoading={user.status === 'pending'}>
-      <RouterProvider router={routes} />
-    {/* </Loader> */}
-  );
+  return <RouterProvider router={routes} />;
 }
