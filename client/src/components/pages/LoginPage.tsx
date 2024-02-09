@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
   return (
     <div>LoginPage</div>
   )
