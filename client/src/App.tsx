@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import LoginPage from './components/pages/LoginPage';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { checkUserThunk } from './redux/slices/auth/authThunks';
+// import { checkUserThunk } from './redux/slices/auth/authThunks';
 import Root from './components/ui/Root';
 import Loader from './components/hocs/Loader';
 import AdminPage from './components/pages/AdminPage';
@@ -15,13 +15,13 @@ import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
 function App(): JSX.Element {
-  const user = useAppSelector((state) => state.auth.user);
-  const dispatch = useAppDispatch();
+  // const user = useAppSelector((state) => state.auth.user);
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    void dispatch(checkUserThunk());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   void dispatch(checkUserThunk());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const routes = createBrowserRouter([
     {
@@ -52,28 +52,28 @@ function App(): JSX.Element {
           path: '/servicePage',
           element: <ServicePage/>,
         },
-        {
-          element: <PrivateRouter isAllowed={user.status === 'logged'} />,
-          children: [
-            {
-              path: '/adminPage',
-              element: <AdminPage/>,
-            },
-            {
-              path: '/managerPage',
-              element: <ManagerPage />,
-            },
-          ],
-        },
+        // {
+        //   element: <PrivateRouter isAllowed={user.status === 'logged'} />,
+        //   children: [
+        //     {
+        //       path: '/adminPage',
+        //       element: <AdminPage/>,
+        //     },
+        //     {
+        //       path: '/managerPage',
+        //       element: <ManagerPage />,
+        //     },
+        //   ],
+        // },
         
       ],
     },
   ]);
 
   return (
-    <Loader isLoading={user.status === 'pending'}>
+    // <Loader isLoading={user.status === 'pending'}>
       <RouterProvider router={routes} />
-    </Loader>
+    {/* </Loader> */}
   );
 }
 
