@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
 const { Router } = require('express');
 const { OrderedService } = require('../db/models');
 
@@ -22,7 +24,7 @@ router
       const { orderId } = req.params;
       const newOrderedServices = req.body.orederedServices;
       for (let i = 0; i < newOrderedServices.length; i++) {
-        await OrderedServices.create({ orderId, ...newOrderedServices[i] });
+        await OrderedService.create({ orderId, ...newOrderedServices[i] });
       }
       const orederedServices = await OrderedService.findAll({
         where: { orderId },
@@ -38,9 +40,11 @@ router
       const { orderId } = req.params;
       const updatedOrderedServices = req.body.orederedServices;
       for (let i = 0; i < updatedOrderedServices.length; i++) {
-        await OrderedServices.update(
+        await OrderedService.update(
           { amount: updatedOrderedServices[i].amount },
-          { where: { orderId, serviceId: updatedOrderedServices[i].serviceId } }
+          {
+            where: { orderId, serviceId: updatedOrderedServices[i].serviceId },
+          },
         );
       }
       const orederedServices = await OrderedService.findAll({

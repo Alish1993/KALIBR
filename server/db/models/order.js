@@ -12,10 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         through: OrderedService,
         foreignKey: 'orderId',
       });
-      this.hasMany(OrderedService, {
-        foreignKey: 'orderId',
-        as: 'OrdServises',
-      });
+      // this.hasMany(OrderedService, {
+      //   foreignKey: 'orderId',
+      // });
     }
   }
   Order.init(

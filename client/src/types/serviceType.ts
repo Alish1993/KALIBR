@@ -3,5 +3,3 @@ export type ServiceType = {
   title: string;
   price: number;
 };
-
-export type ServiceFormType = Omit<ServiceType , 'id'>
