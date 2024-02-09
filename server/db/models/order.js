@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Service, OrderedServices }) {
       this.belongsToMany(Service, {
-        through: OrderedServices,
+        through: 'OrderedServices',
         foreignKey: 'orderId',
       });
-      this.hasMany(OrderedServices, { foreignKey: 'orderId' });
+      // this.hasMany(OrderedServices, { foreignKey: 'orderId' });
     }
   }
   Order.init(
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Order',
-    },
+    }
   );
   return Order;
 };
