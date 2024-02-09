@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import LoginPage from './components/pages/LoginPage';
@@ -23,6 +23,7 @@ function App(): JSX.Element {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
 
+export default function App(): JSX.Element {
   const routes = createBrowserRouter([
     {
       path: '/',
@@ -30,7 +31,7 @@ function App(): JSX.Element {
       children: [
         {
           path: '/',
-          element: <MainPage/>,
+          element: <MainPage />,
         },
         {
           path: '/loginPage',
@@ -65,16 +66,13 @@ function App(): JSX.Element {
         //     },
         //   ],
         // },
-        
+      
       ],
     },
   ]);
-
   return (
     // <Loader isLoading={user.status === 'pending'}>
       <RouterProvider router={routes} />
     {/* </Loader> */}
   );
 }
-
-export default App;
