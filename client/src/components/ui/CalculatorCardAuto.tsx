@@ -5,19 +5,21 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
 
 export default function CalculatorCardAuto(): JSX.Element {
   return (
-    <Card variant="outlined" sx={{ maxWidth: 360 }}>
-      <Box sx={{ display: 'flex' }}>
+    <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>
+      <Box sx={{ display: 'flex', paddingX: 2 }}>
         {/* Левая часть */}
-        <Box sx={{ p: 2, flex: 1 }}>
+        <Box sx={{ flex: '1 0 33%' }}>
           <Typography gutterBottom variant="h5" component="div">
             Грузовые автомобили
           </Typography>
-          <Typography gutterBottom variant="h6" component="div">
-            4.50 руб
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <LocalShippingRoundedIcon sx={{ marginRight: 1 }} />
+            {/* Изображение вставлено здесь */}
+          </Box>
           <Typography color="text.secondary" variant="body2">
             Самые вместительные и быстрые
           </Typography>
@@ -25,7 +27,7 @@ export default function CalculatorCardAuto(): JSX.Element {
         {/* Вертикальная черта-разделитель */}
         <Divider orientation="vertical" flexItem />
         {/* Правая часть */}
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ flex: '2 0 66%', paddingLeft: 2 }}>
           <Typography gutterBottom variant="body2">
             Select type
           </Typography>
