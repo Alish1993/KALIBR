@@ -96,6 +96,7 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Кол-во машин"
               value={amount}
+              label="Кол-во машин"
               // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               //   setAmount(event.target.value);
               // }
@@ -117,6 +118,7 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Время работы"
               value={time}
+              label="Время работы"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setTime(event.target.value);
               }}
@@ -137,6 +139,7 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Расстояние от МКАД"
               value={path}
+              label="Расстояние от МКАД"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setPath(event.target.value);
               }}
