@@ -7,6 +7,33 @@ export default function CalculatorCardPackage(): JSX.Element {
   const [roll, setRoll] = React.useState('');
   const [scotch, setScotch] = React.useState('');
   const [stretchRoll, setStretchRoll] = React.useState('');
+  
+  const [isPackageSelected, setIsPackageSelected] = React.useState(false);
+
+  // анимация коробки при выборе их количества
+  const handleChangeBox = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setBox(event.target.value as string);
+    setIsPackageSelected(true);
+    setTimeout(() => setIsPackageSelected(false), 300);
+  };
+
+  const handleChangeRoll = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setRoll(event.target.value as string);
+    setIsPackageSelected(true);
+    setTimeout(() => setIsPackageSelected(false), 300);
+  };
+
+  const handleChangeScotch = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setScotch(event.target.value as string);
+    setIsPackageSelected(true);
+    setTimeout(() => setIsPackageSelected(false), 300);
+  };
+
+  const handleChangeStretchRoll = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setStretchRoll(event.target.value as string);
+    setIsPackageSelected(true);
+    setTimeout(() => setIsPackageSelected(false), 300);
+  };
 
   return (
     <Card variant="outlined" sx={{ margin: '10px' }}>
@@ -17,7 +44,9 @@ export default function CalculatorCardPackage(): JSX.Element {
             Упаковочные материалы
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <ViewInArSharpIcon sx={{ marginRight: 1 }} />
+            <ViewInArSharpIcon sx={{ marginRight: 1,
+            fontSize: '4.5rem',
+            animation: isPackageSelected ? 'rotate 0.3s forwards' : null, }} />
             {/* Изображение вставлено здесь */}
           </Box>
           <Typography color="text.secondary" variant="body2">
@@ -43,9 +72,10 @@ export default function CalculatorCardPackage(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Короб 600*400*400 мм"
                 value={box}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setBox(event.target.value);
-                }}
+                onChange={handleChangeBox}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setBox(event.target.value);
+                // }}
               />
             </Box>
             {/* выбор кол-ва рулонов пленки начало */}
@@ -60,9 +90,10 @@ export default function CalculatorCardPackage(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Плёнка воздушно-пузырьковая, рулон"
                 value={roll}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setRoll(event.target.value);
-                }}
+                onChange={handleChangeRoll}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setRoll(event.target.value);
+                // }}
               />
             </Box>
           </Box>
@@ -80,9 +111,10 @@ export default function CalculatorCardPackage(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Скотч"
                 value={scotch}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setScotch(event.target.value);
-                }}
+                onChange={handleChangeScotch}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setScotch(event.target.value);
+                // }}
               />
             </Box>
             {/* выбор кол-ва рулонов стрейч-пленки начало */}
@@ -97,15 +129,27 @@ export default function CalculatorCardPackage(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Стрейч-пленка, рулон"
                 value={stretchRoll}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setStretchRoll(event.target.value);
-                }}
+                onChange={handleChangeStretchRoll}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setStretchRoll(event.target.value);
+                // }}
               />
             </Box>
              {/* выбор кол-ва рулонов стрейч-пленки конец */}
           </Box>
         </Box>
       </Box>
+      <style jsx>{`
+         @keyframes rotate {
+           0% {
+             transform: rotate(0deg);
+           }
+           100% {
+             transform: rotate(360deg);
+           }
+         }
+         }
+       `}</style>
     </Card>
   );
 }

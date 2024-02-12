@@ -22,6 +22,18 @@ export default function CalculatorCardAuto(): JSX.Element {
     setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
   };
 
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTime(event.target.value);
+    setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
+    setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
+  };
+
+  const handlePathChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPath(event.target.value);
+    setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
+    setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
+  };
+
   return (
     <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>
       <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>
@@ -36,7 +48,8 @@ export default function CalculatorCardAuto(): JSX.Element {
             <LocalShippingRoundedIcon
               sx={{
                 marginRight: 1,
-                animation: isMachineSelected ? 'moveOut 0.3s forwards' : null,
+                fontSize: '4.5rem',
+                animation: isMachineSelected ? 'moveOut 3.0s forwards' : null,
               }}
             />
           </Box>
@@ -110,9 +123,10 @@ export default function CalculatorCardAuto(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Время работы"
                 value={time}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setTime(event.target.value);
-                }}
+                onChange={handleTimeChange}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setTime(event.target.value);
+                // }}
               />
             </Box>
             {/* Время работы конец */}
@@ -128,9 +142,10 @@ export default function CalculatorCardAuto(): JSX.Element {
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Расстояние от МКАД"
                 value={path}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setPath(event.target.value);
-                }}
+                onChange={handlePathChange}
+                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                //   setPath(event.target.value);
+                // }}
               />
             </Box>
               {/* Расстояние от МКАД конец */}
