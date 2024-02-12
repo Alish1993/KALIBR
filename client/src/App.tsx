@@ -2,14 +2,14 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import LoginPage from './components/pages/LoginPage';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
+// import { useAppDispatch, useAppSelector } from './redux/hooks';
 // import { checkUserThunk } from './redux/slices/auth/authThunks';
 import Root from './components/ui/Root';
-import Loader from './components/hocs/Loader';
-import AdminPage from './components/pages/AdminPage';
-import ManagerPage from './components/pages/ManagerPage';
+// import Loader from './components/hocs/Loader';
+// import AdminPage from './components/pages/AdminPage';
+// import ManagerPage from './components/pages/ManagerPage';
 import CalculatorPage from './components/pages/CalculatorPage';
-import PrivateRouter from './components/hocs/PrivateRouter';
+// import PrivateRouter from './components/hocs/PrivateRouter';
 import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
@@ -23,7 +23,6 @@ export default function App(): JSX.Element {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
 
-
   const routes = createBrowserRouter([
     {
       path: '/',
@@ -35,23 +34,23 @@ export default function App(): JSX.Element {
         },
         {
           path: '/loginPage',
-          element: <LoginPage/>,
+          element: <LoginPage />,
         },
         {
           path: '/calculatorPage',
-          element: <CalculatorPage/>,
+          element: <CalculatorPage />,
         },
         {
           path: '/contactPage',
-          element: <ContactPage/>,
+          element: <ContactPage />,
         },
         {
           path: '/pricePage',
-          element: <PricePage/>,
+          element: <PricePage />,
         },
         {
           path: '/servicePage',
-          element: <ServicePage/>,
+          element: <ServicePage />,
         },
         // {
         //   element: <PrivateRouter isAllowed={user.status === 'logged'} />,
@@ -66,13 +65,8 @@ export default function App(): JSX.Element {
         //     },
         //   ],
         // },
-      
       ],
     },
   ]);
-  return (
- 
-      <RouterProvider router={routes} />
-
-  );
+  return <RouterProvider router={routes} />;
 }
