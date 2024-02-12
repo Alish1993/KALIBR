@@ -1,10 +1,10 @@
 import React from 'react';
 import { Typography, TextField, Button, Box } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import CalculatorCardAuto from '../ui/CalculatorCardAuto';
 import CalculatorCardLoader from '../ui/CalculatorCardLoader';
 import CalculatorCardPackage from '../ui/CalculatorCardPackage';
 
-import SendIcon from '@mui/icons-material/Send';
 
 
 export default function CalculatorPage(): JSX.Element {

@@ -14,21 +14,22 @@ import Select from '@mui/material/Select';
 export default function CalculatorCardAuto(): JSX.Element {
   // const counterValue = useAppSelector((state) => state.counter.value);
   // const dispatch = useAppDispatch();
+  
+  const [machine, setMachine] = React.useState(''); // селект для выбора машины
+  const [amount, setAmount] = React.useState(''); // инпут для кол-ва машин
+  const [time, setTime] = React.useState(''); // инпут для времени работы
+  const [path, setPath] = React.useState(''); // инпут для выбора расстояния
+  
+  const [isMachineSelected, setIsMachineSelected] = React.useState(false); // анимация машины
 
-  const [amount, setAmount] = React.useState(''); //управляемый инпут для кол-ва машин
-  const [time, setTime] = React.useState(''); //управляемый инпут для времени работы
-  const [path, setPath] = React.useState(''); //управляемый инпут для времени работы
-  const [machine, setMachine] = React.useState(''); //для выбора машины
-  const [isMachineSelected, setIsMachineSelected] = React.useState(false); //для анимации
-
-  //для анимации при выборе машины
+  // для анимации при выборе машины
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setMachine(event.target.value as string);
     setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
     setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
   };
 
-    //для анимации при выборе количества машин
+    // для анимации при выборе количества машин
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
     setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
@@ -62,7 +63,7 @@ export default function CalculatorCardAuto(): JSX.Element {
         {/* Правая часть */}
         <Box sx={{ flex: '2 0 66%', paddingLeft: 2 }}>
 
-          {/*выбор машины начало*/}
+          {/* выбор машины начало */}
           <FormControl sx={{ m: 1, minWidth: 150 }}>
             <InputLabel id="demo-simple-select-helper-label">Тип машины</InputLabel>
             <Select
@@ -81,9 +82,9 @@ export default function CalculatorCardAuto(): JSX.Element {
             </Select>
             <FormHelperText>Выбрать машину</FormHelperText>
           </FormControl>
-          {/*выбор машины конец*/}
+          {/* выбор машины конец */}
 
-          {/*Кол-во машин начало*/}
+          {/* Кол-во машин начало */}
           <Box
             component="form"
             sx={{
@@ -96,16 +97,15 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Кол-во машин"
               value={amount}
-              label="Кол-во машин"
               // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               //   setAmount(event.target.value);
               // }
               onChange={handleAmountChange}
             />
           </Box>
-          {/*Кол-во машин конец*/}
+          {/* Кол-во машин конец */}
 
-          {/*Время работы начало*/}
+          {/* Время работы начало */}
           <Box
             component="form"
             sx={{
@@ -118,15 +118,14 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Время работы"
               value={time}
-              label="Время работы"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setTime(event.target.value);
               }}
             />
           </Box>
-          {/*Время работы конец*/}
+          {/* Время работы конец */}
 
-          {/*Расстояние от МКАД начало*/}
+          {/* Расстояние от МКАД начало */}
           <Box
             component="form"
             sx={{
@@ -139,13 +138,12 @@ export default function CalculatorCardAuto(): JSX.Element {
               id="outlined-controlled"
               label="Расстояние от МКАД"
               value={path}
-              label="Расстояние от МКАД"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setPath(event.target.value);
               }}
             />
           </Box>
-          {/*Расстояние от МКАД конец*/}
+          {/* Расстояние от МКАД конец */}
 
           {/* <Box mt={5} display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" flexDirection="row" justifyContent="center">
@@ -164,7 +162,7 @@ export default function CalculatorCardAuto(): JSX.Element {
           </Box> */}
         </Box>
       </Box>
-      {/* CSS анимация ухода машины за границы*/}
+      {/* CSS анимация ухода машины за границы */}
       <style jsx>{`
          @keyframes moveOut {
            0% {
