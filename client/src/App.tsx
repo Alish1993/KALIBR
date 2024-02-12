@@ -2,6 +2,7 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import SignInPage from './components/pages/SignInPage';
+import AvatarPage from './components/pages/AvatarPage';
 // import { useAppDispatch, useAppSelector } from './redux/hooks';
 // import { checkUserThunk } from './redux/slices/auth/authThunks';
 import Root from './components/ui/Root';
@@ -36,6 +37,10 @@ export default function App(): JSX.Element {
         {
           path: '/signin',
           element: <SignInPage/>,
+        },
+        {
+          path: '/avatar',
+          element: <AvatarPage/>,
         },
         {
           path: '/calculatorPage',
