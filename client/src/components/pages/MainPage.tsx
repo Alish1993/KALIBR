@@ -51,12 +51,7 @@ export default function MainPage(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <Box
-      // sx={{
-      //   p: 8,
-      //   backgroundSize: 'cover',
-      //   backgroundPosition: 'center',
-      //   height: '1000px',
-      // }}
+
       >
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} sx={{ position: 'relative' }}>
