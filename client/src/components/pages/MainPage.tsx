@@ -165,7 +165,7 @@ export default function MainPage(): JSX.Element {
                       >
                         <Grid item xs={6}>
                           <div>
-                            <Typography variant="h5">{tab.text}</Typography>
+                            <Typography variant="h5" >{tab.text}</Typography>
                           </div>
                         </Grid>
                         <Grid item xs={3}>
@@ -187,7 +187,7 @@ export default function MainPage(): JSX.Element {
             Почему нас выбирают
           </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <img
                 src="https://img.freepik.com/free-photo/young-courier-and-his-colleague-unloading-cardboard-boxes-from-delivery-van_637285-2293.jpg?w=1380&t=st=1707740937~exp=1707741537~hmac=f73671359f4b638e36210d4287ce930f38c7032ea64c92bb7fd8add6cf0912e0"
                 alt="description"
@@ -195,7 +195,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" align="center" gutterBottom>
+              <Typography variant="h4" align="center" gutterBottom>
                 Удобный сервис
               </Typography>
               <Typography align="center">
@@ -204,7 +204,7 @@ export default function MainPage(): JSX.Element {
                 праздничные дни.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <img
                 src="https://30.img.avito.st/image/1/1.U7_TCraB_1alrw1Q-VNhzxyp-1Bxq_9QFsr7UKWvDVBlrfNSZav_Eg.Y2ZEvGfySPyfkoIRqs7fBmcevcmqtz1w8tNl9ia0uiA"
                 alt="description"
@@ -212,7 +212,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" textAlign="center" gutterBottom>
+              <Typography variant="h4" textAlign="center" gutterBottom>
                 Опыт, проверенный временем
               </Typography>
               <Typography textAlign="center">
@@ -221,7 +221,7 @@ export default function MainPage(): JSX.Element {
                 доверяют многие.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <img
                 src="https://rockstarpromovers.com/wp-content/uploads/2021/01/movers.png"
                 alt="description"
@@ -229,7 +229,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" textAlign="center" gutterBottom>
+              <Typography variant="h4" textAlign="center" gutterBottom>
                 Мы любим то, что делаем
               </Typography>
               <Typography textAlign="center">

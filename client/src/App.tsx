@@ -1,72 +1,52 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import { createTheme, Button, CssBaseline } from '@mui/material';
 import MainPage from './components/pages/MainPage';
 import SignInPage from './components/pages/SignInPage';
-// import { useAppDispatch, useAppSelector } from './redux/hooks';
-// import { checkUserThunk } from './redux/slices/auth/authThunks';
 import Root from './components/ui/Root';
-// import Loader from './components/hocs/Loader';
-// import AdminPage from './components/pages/AdminPage';
-// import ManagerPage from './components/pages/ManagerPage';
 import CalculatorPage from './components/pages/CalculatorPage';
-// import PrivateRouter from './components/hocs/PrivateRouter';
 import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 import ServicePage from './components/pages/ServicePage';
 
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 export default function App(): JSX.Element {
-  // const user = useAppSelector((state) => state.auth.user);
-  // const dispatch = useAppDispatch();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // useEffect(() => {
-  //   void dispatch(checkUserThunk());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-  const routes = createBrowserRouter([
-    {
-      path: '/',
-      element: <Root />,
-      children: [
-        {
-          path: '/',
-          element: <MainPage />,
-        },
-        {
-          path: '/signin',
-          element: <SignInPage/>,
-        },
-        {
-          path: '/calculatorPage',
-          element: <CalculatorPage />,
-        },
-        {
-          path: '/contactPage',
-          element: <ContactPage />,
-        },
-        {
-          path: '/pricePage',
-          element: <PricePage />,
-        },
-        {
-          path: '/servicePage',
-          element: <ServicePage />,
-        },
-        // {
-        //   element: <PrivateRouter isAllowed={user.status === 'logged'} />,
-        //   children: [
-        //     {
-        //       path: '/adminPage',
-        //       element: <AdminPage/>,
-        //     },
-        //     {
-        //       path: '/managerPage',
-        //       element: <ManagerPage />,
-        //     },
-        //   ],
-        // },
-      ],
-    },
-  ]);
-  return <RouterProvider router={routes} />;
+  return (
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <Button onClick={toggleDarkMode}>
+        {isDarkMode ? 'Переключить на дневной режим' : 'Переключить на ночной режим'}
+      </Button>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Root />}>
+            <Route index element={<MainPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/calculatorPage" element={<CalculatorPage />} />
+            <Route path="/contactPage" element={<ContactPage />} />
+            <Route path="/pricePage" element={<PricePage />} />
+            <Route path="/servicePage" element={<ServicePage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
 }
