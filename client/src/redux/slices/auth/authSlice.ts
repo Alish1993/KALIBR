@@ -1,6 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { checkUserThunk, refreshTokenThunk, signInThunk, signOutThunk } from './authThunks';
+import {
+  checkUserThunk,
+  refreshTokenThunk,
+  setAvatarThunk,
+  signInThunk,
+  signOutThunk,
+} from './authThunks';
 import type { UserStateType } from '../../../types/authTypes';
 
 export type UserState = { accessToken: string; user: UserStateType };
@@ -41,12 +47,20 @@ const authSlice = createSlice({
       state.accessToken = '';
       state.user = { status: 'guest' };
     });
-    // Logout
     builder.addCase(signOutThunk.fulfilled, (state, action) => {
       state.accessToken = '';
       state.user = { status: 'guest' };
     });
     builder.addCase(signOutThunk.rejected, (state, action) => state);
+
+    // multer
+
+    builder.addCase(setAvatarThunk.fulfilled, (state, action) => {
+      if (state.user.status === 'logged')
+        state.user = { ...state.user, avatar: action.payload.avatar };
+      // Что будет если иф не сработает?
+    });
+    builder.addCase(setAvatarThunk.rejected, (state, action) => state);
   },
 });
 
