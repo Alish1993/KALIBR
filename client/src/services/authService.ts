@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 import axios from 'axios';
-import type { AuthStateType, UserSignInType } from '../types/authTypes';
+import type { AuthStateType, UserSignInType, UserType } from '../types/authTypes';
 
 const authApiService = axios.create({
   baseURL: `${import.meta.env.VITE_BASE_URL}`,
@@ -25,6 +25,13 @@ class AuthService {
 
   static async signOut(): Promise<AxiosResponse> {
     return authApiService('/auth/signout');
+  }
+
+  // multer
+
+  static async setAvatar(formData): Promise<UserType> {
+    const {data} = await authApiService.patch<UserType>('/auth/avatar', formData)
+    return data
   }
 }
 

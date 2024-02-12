@@ -2,7 +2,7 @@ export type UserType = {
   id: number;
   username: string;
   email: string;
-  avatar?: string;
+  avatar: string | null;
 };
 
 export type UserSignInType = Omit<UserType, 'id'>;
