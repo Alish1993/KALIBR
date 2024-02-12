@@ -7,38 +7,7 @@ const verifyRefreshToken = require('../middlewares/verifyRefreshToken');
 
 const router = Router();
 
-router.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
-
-  if (username && email && password) {
-    try {
-      const [user, created] = await User.findOrCreate({
-        where: { email },
-        defaults: { username, password: await bcrypt.hash(password, 10) },
-      });
-
-      if (!created) {
-        return res.status(403).json({ message: 'User already exists' });
-      }
-
-      const plainUser = user.get();
-      delete plainUser.password;
-
-      const { accessToken, refreshToken } = generateTokens({ user: plainUser });
-
-      return res
-        .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
-        .status(200)
-        .json({ accessToken, user: plainUser });
-    } catch (e) {
-      console.log(e);
-      return res.sendStatus(500);
-    }
-  }
-  return res.sendStatus(500);
-});
-
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 
   if (email && password) {
@@ -68,7 +37,7 @@ router.post('/login', async (req, res) => {
   return res.sendStatus(500);
 });
 
-router.get('/logout', (req, res) => {
+router.get('/signout', (req, res) => {
   res.clearCookie('refreshToken').sendStatus(200);
 });
 
