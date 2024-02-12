@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import AuthService from '../../../services/authService';
-import type { AuthStateType, UserSignInType } from '../../../types/authTypes';
+import type { AuthStateType, UserSignInType, UserType } from '../../../types/authTypes';
 
 export const checkUserThunk = createAsyncThunk<AuthStateType>('auth/checkUser', async () => {
   const data = await AuthService.check();
@@ -22,5 +22,12 @@ export const signOutThunk = createAsyncThunk('auth/signout', async () => {
 
 export const refreshTokenThunk = createAsyncThunk<AuthStateType>('auth/refreshToken', async () => {
   const data = AuthService.refresh();
+  return data;
+});
+
+// multer
+
+export const setAvatarThunk = createAsyncThunk<UserType>('auth/avatar', async (formData) => {
+  const data = await AuthService.setAvatar(formData);
   return data;
 });
