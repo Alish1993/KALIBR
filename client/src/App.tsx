@@ -23,7 +23,6 @@ export default function App(): JSX.Element {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
 
-
   const routes = createBrowserRouter([
     {
       path: '/',
@@ -39,19 +38,19 @@ export default function App(): JSX.Element {
         },
         {
           path: '/calculatorPage',
-          element: <CalculatorPage/>,
+          element: <CalculatorPage />,
         },
         {
           path: '/contactPage',
-          element: <ContactPage/>,
+          element: <ContactPage />,
         },
         {
           path: '/pricePage',
-          element: <PricePage/>,
+          element: <PricePage />,
         },
         {
           path: '/servicePage',
-          element: <ServicePage/>,
+          element: <ServicePage />,
         },
         // {
         //   element: <PrivateRouter isAllowed={user.status === 'logged'} />,
@@ -66,16 +65,8 @@ export default function App(): JSX.Element {
         //     },
         //   ],
         // },
-      
       ],
     },
   ]);
-  return (
- 
-      <RouterProvider router={routes} />
-
-
-
-
-  );
+  return <RouterProvider router={routes} />;
 }
