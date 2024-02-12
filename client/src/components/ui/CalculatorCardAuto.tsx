@@ -24,7 +24,7 @@ export default function CalculatorCardAuto(): JSX.Element {
 
   return (
     <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>
-      <Box sx={{ display: 'flex', paddingX: 2 }}>
+      <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>
         {/* Левая часть */}
         <Box sx={{ flex: '1 0 33%' }}>
           <Typography gutterBottom variant="h5" component="div">
@@ -59,6 +59,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             >
               <TextField
                 id="amount"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Кол-во машин"
                 value={amount}
                 onChange={handleAmountChange}
@@ -77,6 +78,7 @@ export default function CalculatorCardAuto(): JSX.Element {
                 <Select
                   labelId="labelIdmachine"
                   id="machine"
+                  sx={{ backgroundColor: '#ffffff'}}
                   value={machine}
                   label="Тип машины"
                   onChange={handleChange}
@@ -105,6 +107,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             >
               <TextField
                 id="time"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Время работы"
                 value={time}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,6 +125,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             >
               <TextField
                 id="path"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Расстояние от МКАД"
                 value={path}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

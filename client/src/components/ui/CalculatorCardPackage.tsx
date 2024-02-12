@@ -10,7 +10,7 @@ export default function CalculatorCardPackage(): JSX.Element {
 
   return (
     <Card variant="outlined" sx={{ margin: '10px' }}>
-      <Box sx={{ display: 'flex', paddingX: 2 }}>
+      <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>
         {/* Левая часть */}
         <Box sx={{ flex: '1 0 33%' }}>
           <Typography gutterBottom variant="h5" component="div">
@@ -40,6 +40,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             >
               <TextField
                 id="box"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Короб 600*400*400 мм"
                 value={box}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +57,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             >
               <TextField
                 id="roll"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Плёнка воздушно-пузырьковая, рулон"
                 value={roll}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +77,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             >
               <TextField
                 id="scotch"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Скотч"
                 value={scotch}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +94,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             >
               <TextField
                 id="stretchRoll"
+                sx={{ backgroundColor: '#ffffff'}}
                 label="Стрейч-пленка, рулон"
                 value={stretchRoll}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
