@@ -4,6 +4,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/userRouter');
 const tokensRouter = require('./routes/tokensRouter');
+const oredersRouter = require('./routes/ordersRouter');
+const servicesRouter = require('./routes/servicesRouter');
+const orderedServicesRouter = require('./routes/orderedServicesRouter');
 
 require('dotenv').config();
 
@@ -18,5 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', userRouter);
 app.use('/api/tokens', tokensRouter);
+app.use('/api/orders', oredersRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/orderedservices', orderedServicesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
