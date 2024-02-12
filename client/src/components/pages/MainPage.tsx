@@ -93,11 +93,20 @@ export default function MainPage(): JSX.Element {
                     Прозрачные и доступные цены
                   </li>
                 </ul>
-                <div className="flex">
-                  <Button variant="contained" color="primary" sx={{ mr: 4 }}>
+                <div className="flex" style={{ display: 'flex' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ mr: 2 }}
+                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                  >
                     Узнать цены
                   </Button>
-                  <Button variant="contained" color="secondary">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                  >
                     Оставить заявку
                   </Button>
                 </div>
@@ -151,11 +160,11 @@ export default function MainPage(): JSX.Element {
                           width="440px"
                         />
                       </Grid>
-                      <div 
+                      <div
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                       >
                         <Grid item xs={6}>
-                          <div >
+                          <div>
                             <Typography variant="h5">{tab.text}</Typography>
                           </div>
                         </Grid>
@@ -173,7 +182,7 @@ export default function MainPage(): JSX.Element {
           </div>
         </Box>
 
-        <div className="text-lg mt-8" style={{ marginTop: '70px' }}>
+        <div className="text-lg mt-8" style={{ marginTop: '80px' }}>
           <Typography variant="h2" align="center" gutterBottom>
             Почему нас выбирают
           </Typography>
@@ -232,7 +241,7 @@ export default function MainPage(): JSX.Element {
           </Grid>
         </div>
 
-        <div className="text-lg mt-8">
+        <div className="text-lg mt-8" style={{ marginTop: '80px' }}>
           <Typography variant="h2" textAlign="center" gutterBottom>
             Этапы проведения переезда
           </Typography>
