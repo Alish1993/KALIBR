@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
 const tokensRouter = require('./routes/tokensRouter');
 const oredersRouter = require('./routes/ordersRouter');
 const servicesRouter = require('./routes/servicesRouter');
@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/auth', userRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/tokens', tokensRouter);
 app.use('/api/orders', oredersRouter);
 app.use('/api/services', servicesRouter);
