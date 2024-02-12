@@ -4,6 +4,9 @@ import CalculatorCardAuto from '../ui/CalculatorCardAuto';
 import CalculatorCardLoader from '../ui/CalculatorCardLoader';
 import CalculatorCardPackage from '../ui/CalculatorCardPackage';
 
+import SendIcon from '@mui/icons-material/Send';
+
+
 export default function CalculatorPage(): JSX.Element {
   return (
     <Box>
@@ -24,7 +27,9 @@ export default function CalculatorPage(): JSX.Element {
         <Box sx={{ mb: 4 }}>
           <TextField label="Номер телефона" variant="outlined" fullWidth />
         </Box>
-        <Button variant="contained" color="primary">Отправить заявку</Button>
+        <Button variant="contained" endIcon={<SendIcon />}>
+        Отправить заявку
+      </Button>
       </Box>
     </Box>
   );
