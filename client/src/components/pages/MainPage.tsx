@@ -5,6 +5,9 @@ import PhonelinkRingTwoToneIcon from '@mui/icons-material/PhonelinkRingTwoTone';
 import RequestQuoteTwoToneIcon from '@mui/icons-material/RequestQuoteTwoTone';
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
 import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
+import { useAppDispatch } from '../../redux/hooks';
+import { setToggleOrderModal } from '../../redux/slices/modals/modalsSlice';
+import OrderModal from '../ui/OrderModal';
 
 const theme = {}; // Вам нужно определить тему или использовать импортированную тему
 const tabContent = [
@@ -27,36 +30,33 @@ const tabContent = [
     icon: <LocalShippingTwoToneIcon />,
   },
 ];
+const styleUl = {
+  background: 'rgba(0, 0, 0, 0.5)',
+  borderRadius: ' 7px',
+  padding: '20px 10px',
+  width: '400px',
+};
+const styleLi = {
+  padding: '0 0 0 20px',
+  color: 'white',
+  listStyle: 'none',
+  fontSize: '20px',
+};
 
 export default function MainPage(): JSX.Element {
   const [value, setValue] = useState(0);
+  const dispatch = useAppDispatch();
+;
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
-  const styleUl = {
-    background: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: ' 7px',
-    padding: '20px 10px',
-    width: '400px',
-  };
-  const styleLi = {
-    padding: '0 0 0 20px',
-    color: 'white',
-    listStyle: 'none',
-    fontSize: '20px',
-  };
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-
-      >
+      <Box>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} sx={{ position: 'relative' }}>
             <div>
-              <video 
+              <video
                 src="https://videocdn.cdnpk.net/cdn/content/video/free/video0540/large_preview/_import_6311aed696e8b0.21321500.mp4"
                 autoPlay
                 loop
@@ -89,18 +89,26 @@ export default function MainPage(): JSX.Element {
                   </li>
                 </ul>
                 <div className="flex" style={{ display: 'flex' }}>
+                  <OrderModal />
                   <Button
                     variant="contained"
-                    color="primary"
-                    sx={{ mr: 2 }}
-                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                    color="warning"
+                    style={{ width: '100%', height: '100%', borderRadius: '20px' }}
                   >
                     Узнать цены
                   </Button>
                   <Button
                     variant="contained"
                     color="secondary"
-                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '20px',
+                      marginLeft: '30px',
+                    }}
+                    onClick={() => {
+                      void dispatch(setToggleOrderModal(true));
+                    }}
                   >
                     Оставить заявку
                   </Button>
@@ -122,7 +130,7 @@ export default function MainPage(): JSX.Element {
           }}
         >
           <div>
-            <Tabs value={value} onChange={handleChange} variant="fullWidth">
+            <Tabs value={value}  variant="fullWidth">
               {tabContent.map((tab, index) => (
                 <Tab style={{ fontSize: '32px' }} key={index} label={tab.label} />
               ))}
