@@ -8,7 +8,6 @@ import Root from './components/ui/Root';
 import CalculatorPage from './components/pages/CalculatorPage';
 import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
-import ServicePage from './components/pages/ServicePage';
 
 const lightTheme = createTheme({
   palette: {
@@ -43,7 +42,6 @@ export default function App(): JSX.Element {
             <Route path="/calculatorPage" element={<CalculatorPage />} />
             <Route path="/contactPage" element={<ContactPage />} />
             <Route path="/pricePage" element={<PricePage />} />
-            <Route path="/servicePage" element={<ServicePage />} />
           </Route>
         </Routes>
       </Router>

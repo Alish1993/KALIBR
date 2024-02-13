@@ -64,10 +64,10 @@ export default function MainPage(): JSX.Element {
                 style={{ width: '100%', borderRadius: '20px' }}
               />
               <div style={{ position: 'absolute', top: '370px', left: '40px', zIndex: '1' }}>
-                <div style={{ position: 'absolute', top: '-250px', left: '20px', zIndex: '1' }}>
+                <div style={{ position: 'absolute', top: '-340px', left: '20px', zIndex: '1' }}>
                   {' '}
                   <Typography
-                    style={{ width: '800px', color: 'white', fontSize: '80px' }}
+                    style={{ width: '800px', color: 'white', fontSize: '90px' }}
                     variant="h1"
                     className="text-5xl font-bold mb-6"
                   >
