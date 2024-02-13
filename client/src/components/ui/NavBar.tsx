@@ -14,7 +14,7 @@ export default function Navbar(): JSX.Element {
   const links = [
     { to: '/', name: 'Main' },
     { to: '/calculatorPage', name: 'Calculator' },
-    { to: '/loginPage', name: 'Login' },
+    { to: '/signin', name: 'Login' },
     { to: '/contactPage', name: 'Contact' },
     { to: '/pricePage', name: 'Price' },
     { to: '/servicePage', name: 'Service' },
