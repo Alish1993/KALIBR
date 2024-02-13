@@ -9,7 +9,7 @@ import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
 const theme = {}; // Вам нужно определить тему или использовать импортированную тему
 const tabContent = [
   {
-    label: 'Офиссный переезд',
+    label: 'Офисный переезд',
     text: 'Мы готовы перевезти Ваш офис в максимально сжатые сроки.',
     img: 'https://img.freepik.com/free-photo/medium-shot-woman-packing-office-items_23-2149392086.jpg?w=1060&t=st=1707727404~exp=1707728004~hmac=fb3a24d840a9e30ab8a7dd930dad06424652cc5013e0681fc64b60e7e6cbb1cb',
     icon: <PhonelinkRingTwoToneIcon />,
@@ -51,28 +51,23 @@ export default function MainPage(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <Box
-      // sx={{
-      //   p: 8,
-      //   backgroundSize: 'cover',
-      //   backgroundPosition: 'center',
-      //   height: '1000px',
-      // }}
+
       >
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} sx={{ position: 'relative' }}>
             <div>
-              <video
+              <video 
                 src="https://videocdn.cdnpk.net/cdn/content/video/free/video0540/large_preview/_import_6311aed696e8b0.21321500.mp4"
                 autoPlay
                 loop
                 muted
-                style={{ width: '100%', height: '100%', borderRadius: '20px' }}
+                style={{ width: '100%', borderRadius: '20px' }}
               />
-              <div style={{ position: 'absolute', top: '320px', left: '50px', zIndex: '1' }}>
-                <div style={{ position: 'absolute', top: '-300px', left: '20px', zIndex: '1' }}>
+              <div style={{ position: 'absolute', top: '370px', left: '40px', zIndex: '1' }}>
+                <div style={{ position: 'absolute', top: '-340px', left: '20px', zIndex: '1' }}>
                   {' '}
                   <Typography
-                    style={{ width: '700px', color: 'white', fontSize: '85px' }}
+                    style={{ width: '800px', color: 'white', fontSize: '90px' }}
                     variant="h1"
                     className="text-5xl font-bold mb-6"
                   >
@@ -93,11 +88,20 @@ export default function MainPage(): JSX.Element {
                     Прозрачные и доступные цены
                   </li>
                 </ul>
-                <div className="flex">
-                  <Button variant="contained" color="primary" sx={{ mr: 4 }}>
+                <div className="flex" style={{ display: 'flex' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ mr: 2 }}
+                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                  >
                     Узнать цены
                   </Button>
-                  <Button variant="contained" color="secondary">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ width: '100%', height: '100%', borderRadius: '20px' }} // Размер кнопок изменен на 50%
+                  >
                     Оставить заявку
                   </Button>
                 </div>
@@ -151,11 +155,11 @@ export default function MainPage(): JSX.Element {
                           width="440px"
                         />
                       </Grid>
-                      <div 
+                      <div
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                       >
                         <Grid item xs={6}>
-                          <div >
+                          <div>
                             <Typography variant="h5">{tab.text}</Typography>
                           </div>
                         </Grid>
@@ -173,12 +177,17 @@ export default function MainPage(): JSX.Element {
           </div>
         </Box>
 
-        <div className="text-lg mt-8" style={{ marginTop: '70px' }}>
+        <div className="text-lg mt-8" style={{ marginTop: '80px' }}>
           <Typography variant="h2" align="center" gutterBottom>
             Почему нас выбирают
           </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+            >
               <img
                 src="https://img.freepik.com/free-photo/young-courier-and-his-colleague-unloading-cardboard-boxes-from-delivery-van_637285-2293.jpg?w=1380&t=st=1707740937~exp=1707741537~hmac=f73671359f4b638e36210d4287ce930f38c7032ea64c92bb7fd8add6cf0912e0"
                 alt="description"
@@ -186,7 +195,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" align="center" gutterBottom>
+              <Typography variant="h4" align="center" gutterBottom>
                 Удобный сервис
               </Typography>
               <Typography align="center">
@@ -195,7 +204,12 @@ export default function MainPage(): JSX.Element {
                 праздничные дни.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+            >
               <img
                 src="https://30.img.avito.st/image/1/1.U7_TCraB_1alrw1Q-VNhzxyp-1Bxq_9QFsr7UKWvDVBlrfNSZav_Eg.Y2ZEvGfySPyfkoIRqs7fBmcevcmqtz1w8tNl9ia0uiA"
                 alt="description"
@@ -203,7 +217,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" textAlign="center" gutterBottom>
+              <Typography variant="h4" textAlign="center" gutterBottom>
                 Опыт, проверенный временем
               </Typography>
               <Typography textAlign="center">
@@ -212,7 +226,12 @@ export default function MainPage(): JSX.Element {
                 доверяют многие.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+            >
               <img
                 src="https://rockstarpromovers.com/wp-content/uploads/2021/01/movers.png"
                 alt="description"
@@ -220,7 +239,7 @@ export default function MainPage(): JSX.Element {
                 height="250"
                 style={{ backgroundSize: 'contain', borderRadius: '15px' }}
               />
-              <Typography variant="h3" textAlign="center" gutterBottom>
+              <Typography variant="h4" textAlign="center" gutterBottom>
                 Мы любим то, что делаем
               </Typography>
               <Typography textAlign="center">
@@ -232,7 +251,7 @@ export default function MainPage(): JSX.Element {
           </Grid>
         </div>
 
-        <div className="text-lg mt-8">
+        <div className="text-lg mt-8" style={{ marginTop: '80px' }}>
           <Typography variant="h2" textAlign="center" gutterBottom>
             Этапы проведения переезда
           </Typography>
