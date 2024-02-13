@@ -3,19 +3,27 @@ import { Card, Box, Divider, Typography, TextField } from '@mui/material';
 import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';
 
 export default function CalculatorCardLoader(): JSX.Element {
+  // const dispatch = useAppDispatch();
+
   const [amountLoader, setAmountLoader] = React.useState(''); // инпут для кол-ва грузчиков
   const [timeLoader, setTimeloader] = React.useState(''); // инпут для выбора времени
 
   const [isLoaderSelected, setIsLoaderSelected] = React.useState(false); // анимация грузчика
 
   // анимация грузчика при выборе их количества
-  const handleChangeLoader = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmountLoader(event.target.value as string);
+    // dispatch(collectThunk(amountLoader))
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
+  // Функция handleChangeLoader вызывается при изменении значения в поле ввода количества грузчиков.
+  // Она обновляет состояние amountLoader, чтобы отобразить текущее значение в поле ввода.
+  // Затем устанавливает состояние isLoaderSelected в true, чтобы запустить анимацию грузчика.
+  // После этого через 300 миллисекунд (0.3 секунды) вызывается функция setTimeout,
+  // которая снова устанавливает состояние isLoaderSelected в false, чтобы остановить анимацию.
 
-  const handleChangeTimeLoader = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTimeloader(event.target.value as string);
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
@@ -31,7 +39,7 @@ export default function CalculatorCardLoader(): JSX.Element {
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <PeopleAltSharpIcon sx={{ marginRight: 1,
-            fontSize: '4.5rem',
+            fontSize: '3.5rem',
             animation: isLoaderSelected ? 'moveUp 0.9s forwards 3' : null, }} />
             {/* Изображение вставлено здесь */}
           </Box>
@@ -53,7 +61,7 @@ export default function CalculatorCardLoader(): JSX.Element {
             autoComplete="off"
           >
             <TextField
-              id="outlined-controlled"
+              id="amountLoader"
               sx={{ backgroundColor: '#ffffff'}}
               label="Кол-во грузчиков"
               value={amountLoader}
@@ -72,7 +80,7 @@ export default function CalculatorCardLoader(): JSX.Element {
             autoComplete="off"
           >
             <TextField
-              id="outlined-controlled"
+              id="workTime"
               sx={{ backgroundColor: '#ffffff'}}
               label="Время работы"
               value={timeLoader}

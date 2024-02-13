@@ -11,25 +11,25 @@ export default function CalculatorCardPackage(): JSX.Element {
   const [isPackageSelected, setIsPackageSelected] = React.useState(false);
 
   // анимация коробки при выборе их количества
-  const handleChangeBox = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeBox = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBox(event.target.value as string);
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
-  const handleChangeRoll = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeRoll = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRoll(event.target.value as string);
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
-  const handleChangeScotch = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeScotch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setScotch(event.target.value as string);
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
-  const handleChangeStretchRoll = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeStretchRoll = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStretchRoll(event.target.value as string);
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
@@ -45,7 +45,7 @@ export default function CalculatorCardPackage(): JSX.Element {
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <ViewInArSharpIcon sx={{ marginRight: 1,
-            fontSize: '4.5rem',
+            fontSize: '3.5rem',
             animation: isPackageSelected ? 'rotate 0.3s forwards' : null, }} />
             {/* Изображение вставлено здесь */}
           </Box>
@@ -73,9 +73,6 @@ export default function CalculatorCardPackage(): JSX.Element {
                 label="Короб 600*400*400 мм"
                 value={box}
                 onChange={handleChangeBox}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setBox(event.target.value);
-                // }}
               />
             </Box>
             {/* выбор кол-ва рулонов пленки начало */}
@@ -91,9 +88,6 @@ export default function CalculatorCardPackage(): JSX.Element {
                 label="Плёнка воздушно-пузырьковая, рулон"
                 value={roll}
                 onChange={handleChangeRoll}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setRoll(event.target.value);
-                // }}
               />
             </Box>
           </Box>
@@ -112,9 +106,6 @@ export default function CalculatorCardPackage(): JSX.Element {
                 label="Скотч"
                 value={scotch}
                 onChange={handleChangeScotch}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setScotch(event.target.value);
-                // }}
               />
             </Box>
             {/* выбор кол-ва рулонов стрейч-пленки начало */}
@@ -130,9 +121,6 @@ export default function CalculatorCardPackage(): JSX.Element {
                 label="Стрейч-пленка, рулон"
                 value={stretchRoll}
                 onChange={handleChangeStretchRoll}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setStretchRoll(event.target.value);
-                // }}
               />
             </Box>
              {/* выбор кол-ва рулонов стрейч-пленки конец */}

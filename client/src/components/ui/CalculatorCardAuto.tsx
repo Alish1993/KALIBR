@@ -48,8 +48,8 @@ export default function CalculatorCardAuto(): JSX.Element {
             <LocalShippingRoundedIcon
               sx={{
                 marginRight: 1,
-                fontSize: '4.5rem',
-                animation: isMachineSelected ? 'moveOut 3.0s forwards' : null,
+                fontSize: '3.5rem',
+                animation: isMachineSelected ? 'moveOut 1.7s forwards' : null,
               }}
             />
           </Box>
@@ -71,7 +71,7 @@ export default function CalculatorCardAuto(): JSX.Element {
               autoComplete="off"
             >
               <TextField
-                id="amount"
+                id="amountMachine"
                 sx={{ backgroundColor: '#ffffff'}}
                 label="Кол-во машин"
                 value={amount}
@@ -124,9 +124,6 @@ export default function CalculatorCardAuto(): JSX.Element {
                 label="Время работы"
                 value={time}
                 onChange={handleTimeChange}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setTime(event.target.value);
-                // }}
               />
             </Box>
             {/* Время работы конец */}
@@ -143,9 +140,6 @@ export default function CalculatorCardAuto(): JSX.Element {
                 label="Расстояние от МКАД"
                 value={path}
                 onChange={handlePathChange}
-                // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                //   setPath(event.target.value);
-                // }}
               />
             </Box>
               {/* Расстояние от МКАД конец */}
