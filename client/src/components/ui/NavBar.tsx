@@ -6,9 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import { Link, Avatar, IconButton } from '@mui/material';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ThemeContext } from '@emotion/react';
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setAvatarModalVisibility } from '../../redux/slices/modals/modalsSlice';
 
@@ -21,7 +19,7 @@ const linkStyle = {
 const typographyStyle = { fontSize: '1.5rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' };
 
 export default function Navbar(): JSX.Element {
-  const { toggleTheme } = useContext(ThemeContext);
+
   const theme = useTheme();
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
@@ -59,16 +57,7 @@ export default function Navbar(): JSX.Element {
               </Typography>
             </Link>
           ))}
-          <IconButton
-            sx={{
-              color: theme.palette.mode === 'dark' ? 'white' : 'black',
-              width: 100,
-              height: 200,
-            }}
-            onClick={toggleTheme}
-          >
-            {theme.palette.mode === 'light' ? <Brightness7Icon /> : <DarkModeIcon />}
-          </IconButton>
+
           {user.status === 'logged' && (
             <Avatar
               alt="My Avatar"
@@ -82,3 +71,11 @@ export default function Navbar(): JSX.Element {
     </Box>
   );
 }
+
+const links = [
+  { to: '/', name: 'Main' },
+  { to: '/calculatorPage', name: 'Calculator' },
+  { to: '/signin', name: 'Login' },
+  { to: '/contactPage', name: 'Contact' },
+  { to: '/pricePage', name: 'Price' },
+];

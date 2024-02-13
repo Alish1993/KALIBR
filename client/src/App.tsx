@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme, Button, CssBaseline } from '@mui/material';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import MainPage from './components/pages/MainPage';
 import SignInPage from './components/pages/SignInPage';
 import Root from './components/ui/Root';
@@ -27,7 +29,7 @@ const darkTheme = createTheme({
 });
 
 export default function App(): JSX.Element {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.auth.user);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -47,7 +49,7 @@ export default function App(): JSX.Element {
           <AvatarModal />
           <CssBaseline />
           <Button onClick={toggleDarkMode}>
-            {isDarkMode ? 'Переключить на дневной режим' : 'Переключить на ночной режим'}
+            {isDarkMode ? <DarkModeIcon /> : <Brightness7Icon />}
           </Button>
           <Router>
             <Routes>
