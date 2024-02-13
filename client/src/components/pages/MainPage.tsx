@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { Tabs, Tab, Typography, Slide, Box, Grid, Button } from '@mui/material';
+import { Tabs, Tab, Typography, Box, Grid, Button } from '@mui/material';
 import PhonelinkRingTwoToneIcon from '@mui/icons-material/PhonelinkRingTwoTone';
 import RequestQuoteTwoToneIcon from '@mui/icons-material/RequestQuoteTwoTone';
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
@@ -46,9 +46,6 @@ const styleLi = {
 export default function MainPage(): JSX.Element {
   const [value, setValue] = useState(0);
   const dispatch = useAppDispatch();
-;
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -97,9 +94,10 @@ export default function MainPage(): JSX.Element {
                   >
                     Узнать цены
                   </Button>
+
                   <Button
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -107,7 +105,7 @@ export default function MainPage(): JSX.Element {
                       marginLeft: '30px',
                     }}
                     onClick={() => {
-                      void dispatch(setToggleOrderModal(true));
+                      dispatch(setToggleOrderModal(true));
                     }}
                   >
                     Оставить заявку
@@ -130,7 +128,7 @@ export default function MainPage(): JSX.Element {
           }}
         >
           <div>
-            <Tabs value={value}  variant="fullWidth">
+            <Tabs value={value} variant="fullWidth">
               {tabContent.map((tab, index) => (
                 <Tab style={{ fontSize: '32px' }} key={index} label={tab.label} />
               ))}
