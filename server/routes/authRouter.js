@@ -70,10 +70,11 @@ router.patch(
       // создаем файл с помощью fs
       await fs.writeFile(`./public/img/${name}`, outputBuffer);
       // создаем пост в бд
-      const user = await User.update(
+      await User.update(
         { avatar: name },
         { where: { id: res.locals.user.id } },
       );
+      const user = await User.findByPk(res.locals.user.id);
       // отправляем юзера
       return res.json(user);
     } catch (e) {
