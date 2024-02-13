@@ -7,4 +7,10 @@ export const getOrdersThunk = createAsyncThunk<OrderType[]>('orders/getOrders', 
   return data;
 });
 
-export const a = 1;
+export const deleteOrderThunk = createAsyncThunk<OrderType['id'], OrderType['id']>(
+  'orders/deleteOrder',
+  async (id) => {
+    await OrderService.deleteOrder(id);
+    return id;
+  },
+);

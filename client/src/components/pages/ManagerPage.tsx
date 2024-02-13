@@ -16,7 +16,7 @@ export default function ManagerPage(): JSX.Element {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {orders.map((order) => (
-        <OrderCard order={order}/>
+        <OrderCard key={order.id} order={order}/>
       ))}
     </List>
   );
