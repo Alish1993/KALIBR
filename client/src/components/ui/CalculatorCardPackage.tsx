@@ -62,7 +62,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             {/* выбор кол-ва коробок начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
               
@@ -78,7 +78,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             {/* выбор кол-ва рулонов пленки начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
@@ -96,7 +96,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             {/* выбор кол-ва скотча начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
@@ -111,7 +111,7 @@ export default function CalculatorCardPackage(): JSX.Element {
             {/* выбор кол-ва рулонов стрейч-пленки начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >

@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Card, Box, Divider, Typography, TextField } from '@mui/material';
 import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';
+import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
+import { useAppDispatch } from '../../redux/hooks';
+import { CalculatorTypeNoId } from '../../types/calculatorType';
 
 export default function CalculatorCardLoader(): JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const [amountLoader, setAmountLoader] = React.useState(''); // инпут для кол-ва грузчиков
   const [timeLoader, setTimeloader] = React.useState(''); // инпут для выбора времени
@@ -17,16 +20,30 @@ export default function CalculatorCardLoader(): JSX.Element {
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
-  // Функция handleChangeLoader вызывается при изменении значения в поле ввода количества грузчиков.
-  // Она обновляет состояние amountLoader, чтобы отобразить текущее значение в поле ввода.
-  // Затем устанавливает состояние isLoaderSelected в true, чтобы запустить анимацию грузчика.
-  // После этого через 300 миллисекунд (0.3 секунды) вызывается функция setTimeout,
-  // которая снова устанавливает состояние isLoaderSelected в false, чтобы остановить анимацию.
+
 
   const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTimeloader(event.target.value as string);
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
+  };
+
+  // отправка в стор
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData: CalculatorTypeNoId = {
+      amountMachine: 0,
+      machine: '',
+      time: 0,
+      path: 0,
+      amountLoader: parseInt(amountLoader),
+      workTime: parseInt(timeLoader),
+      box: 0,
+      roll: 0,
+      scotch: 0,
+      stretchRoll: 0,
+    };
+    dispatch(formServiceObject(formData));
   };
 
   return (
@@ -55,7 +72,7 @@ export default function CalculatorCardLoader(): JSX.Element {
           <Box
             component="form"
             sx={{ margin: '10px',
-              '& > :not(style)': { m: 1, width: '40ch' },
+              '& > :not(style)': { m: 1, width: '35ch' },
             }}
             noValidate
             autoComplete="off"
@@ -74,7 +91,7 @@ export default function CalculatorCardLoader(): JSX.Element {
           <Box
             component="form"
             sx={{ margin: '10px',
-              '& > :not(style)': { m: 1, width: '40ch' },
+              '& > :not(style)': { m: 1, width: '35ch' },
             }}
             noValidate
             autoComplete="off"

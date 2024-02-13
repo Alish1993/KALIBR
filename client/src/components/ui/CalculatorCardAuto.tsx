@@ -66,7 +66,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             {/* Кол-во машин начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
@@ -82,7 +82,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             {/* выбор машины начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '500px' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '310px' } }}
               noValidate
               autoComplete="off"
             >
@@ -114,7 +114,7 @@ export default function CalculatorCardAuto(): JSX.Element {
              {/* Время работы начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
@@ -130,7 +130,7 @@ export default function CalculatorCardAuto(): JSX.Element {
               {/* Расстояние от МКАД начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >

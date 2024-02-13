@@ -16,3 +16,4 @@ export type CalculatorType = {
   export type CalculatorAutoType = Omit<CalculatorType, 'id' | 'amountLoader' | 'workTime' | 'box' | 'roll' | 'scotch' | 'stretchRoll'>;
   export type CalculatorLoaderType = Omit<CalculatorType, 'id' | 'amountMachine' | 'machine' | 'time' | 'path' | 'box' | 'roll' | 'scotch' | 'stretchRoll'>;
   export type CalculatorPackageType = Omit<CalculatorType, 'id' | 'amountMachine' | 'machine' | 'time' | 'path' | 'amountLoader' | 'workTime'>;
+  export type CalculatorTypeNoId = Omit<CalculatorType, 'id'>;
