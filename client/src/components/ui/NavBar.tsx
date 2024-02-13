@@ -33,6 +33,7 @@ export default function Navbar(): JSX.Element {
     { to: '/contactPage', name: 'Contact' },
     { to: '/pricePage', name: 'Price' },
     { to: '/servicePage', name: 'Service' },
+    { to: '/manager', name: 'Manager' },
   ];
 
   return (

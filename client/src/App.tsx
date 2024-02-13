@@ -12,6 +12,7 @@ import AvatarModal from './components/ui/AvatarModal';
 import Loader from './components/hocs/Loader';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
+import ManagerPage from './components/pages/ManagerPage';
 
 const lightTheme = createTheme({
   palette: {
@@ -56,6 +57,7 @@ export default function App(): JSX.Element {
                 <Route path="/calculatorPage" element={<CalculatorPage />} />
                 <Route path="/contactPage" element={<ContactPage />} />
                 <Route path="/pricePage" element={<PricePage />} />
+                <Route path="/manager" element={<ManagerPage />} />
               </Route>
             </Routes>
           </Router>
