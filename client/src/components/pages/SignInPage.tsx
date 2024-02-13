@@ -30,18 +30,8 @@ export default function SignInPage(): JSX.Element {
             Sign In
           </Typography>
         </Grid>
-        <Grid item xs={22} textAlign="center">
-          <img
-            src="photo_5341680620679583453_y.jpg"
-            alt="Avatar"
-            style={{
-              width: '500px',
-              borderRadius: '20px',
-              marginBottom: '10px',
-              paddingLeft: ' -278px',
-            }}
-          />
-        </Grid>
+
+        {user.status === 'logged' && (user.avatar)}
         <Grid item xs={12}>
           <TextField
             fullWidth

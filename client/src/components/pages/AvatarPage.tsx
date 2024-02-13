@@ -4,15 +4,10 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setAvatarThunk } from '../../redux/slices/auth/authThunks';
 
-
-type Inputs = {
-  file: HTMLInputElement & FileList
-}
-
 export default function AvatarPage(): JSX.Element {
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
-  const submitHandler: React.ChangeEventHandler<HTMLInputElement & { files: FileList }> = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     const selectedFiles = e.target.avatar.files as FileList;
     if (!selectedFiles[0]) return;
@@ -39,14 +34,15 @@ export default function AvatarPage(): JSX.Element {
         <Button variant="outlined" type="submit">
           Поменять аву
         </Button>
-        {user.status === 'logged' && user.avatar !== null && (
+        {user.status}
+        {/* {user.status === 'logged' && user.avatar !== null && ( */}
           <CardMedia
             component="img"
-            sx={{ width: 151 }}
-            image="http/static/images/cards/live-from-space.jpg"
+            sx={{ width: 200 }}
+            image="http://localhost:3001/img/1707742282418.webp"
             alt="Live from space album cover"
           />
-        )}
+        {/* )} */}
       </Grid>
     </Container>
   );
