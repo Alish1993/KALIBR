@@ -6,7 +6,6 @@ const { User } = require('../db/models');
 const generateTokens = require('../utils/generateTokens');
 const cookiesConfig = require('../config/cookiesConfig');
 const verifyRefreshToken = require('../middlewares/verifyRefreshToken');
-const verifyAccessToken = require('../middlewares/verifyAccessToken');
 const upload = require('../middlewares/multer');
 
 const router = Router();
