@@ -4,12 +4,13 @@ import { Container, Grid, TextField, Typography, Button } from '@mui/material';
 export default function ContactsPage(): JSX.Element {
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=a3195520-5a1e-4207-8c88-9880f4c179a5&lang=ru_RU';
+    script.src =
+      'https://api-maps.yandex.ru/2.1/?apikey=a3195520-5a1e-4207-8c88-9880f4c179a5&lang=ru_RU';
     script.async = true;
     script.onload = () => {
       ymaps.ready(() => {
         const map = new ymaps.Map('map', {
-          center: [55.70711175262821, 37.59748726002942],
+          center: [55.816854, 37.590704],
           zoom: 17,
         });
       });
@@ -74,7 +75,20 @@ export default function ContactsPage(): JSX.Element {
           </div>
         </Grid>
       </Grid>
-      <div style={{ marginTop: '100px', width: '100%', height: '593px', background: 'rgba(0, 0, 0, 0.05)', borderRadius: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
+      <div
+        style={{
+          marginTop: '100px',
+          width: '100%',
+          height: '593px',
+          background: 'rgba(0, 0, 0, 0.05)',
+          borderRadius: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px',
+        }}
+      >
         <Typography variant="h5" align="center" gutterBottom style={{ marginTop: '95px' }}>
           Обратная связь
         </Typography>
@@ -83,13 +97,33 @@ export default function ContactsPage(): JSX.Element {
             <TextField fullWidth variant="outlined" name="name" label="Ваше имя" margin="normal" />
           </div>
           <div style={{ marginBottom: '20px' }}>
-            <TextField fullWidth variant="outlined" name="phone" label="Ваш телефон*" type="tel" margin="normal" />
+            <TextField
+              fullWidth
+              variant="outlined"
+              name="phone"
+              label="Ваш телефон*"
+              type="tel"
+              margin="normal"
+            />
           </div>
           <div style={{ marginBottom: '20px' }}>
-            <TextField fullWidth variant="outlined" name="message" label="Сообщение" multiline rows={4} margin="normal" />
+            <TextField
+              fullWidth
+              variant="outlined"
+              name="message"
+              label="Сообщение"
+              multiline
+              rows={4}
+              margin="normal"
+            />
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Button variant="contained" color="primary" sx={{ mr: 2 }} style={{ width: '70%', height: '110%', borderRadius: '20px', margin: '65px' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ mr: 2 }}
+              style={{ width: '70%', height: '110%', borderRadius: '20px', margin: '65px' }}
+            >
               Получить ответ
             </Button>
           </div>

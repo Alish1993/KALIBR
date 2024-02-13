@@ -51,5 +51,4 @@ const links = [
   { to: '/signin', name: 'Login' },
   { to: '/contactPage', name: 'Contact' },
   { to: '/pricePage', name: 'Price' },
-  { to: '/servicePage', name: 'Service' },
 ];

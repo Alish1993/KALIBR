@@ -9,6 +9,7 @@ import CalculatorPage from './components/pages/CalculatorPage';
 import ContactPage from './components/pages/ContactPage';
 import PricePage from './components/pages/PricePage';
 
+
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
