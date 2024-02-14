@@ -8,7 +8,7 @@ import OrderCard from '../ui/OrderCard';
 
 export default function ManagerPage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const orders = useAppSelector((store) => store.orders);
+  const orders = useAppSelector((store) => store.orders.orders);
   useEffect(() => {
     void dispatch(getOrdersThunk());
   }, []);

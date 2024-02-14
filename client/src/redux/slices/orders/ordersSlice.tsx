@@ -18,7 +18,7 @@ const ordersSlice = createSlice({
     );
     builder.addCase(deleteOrderThunk.rejected, (state, action) => state);
     builder.addCase(addOrderThunk.fulfilled, (state, action) => {
-      state.order = [...state.order, action.payload];
+      state.orders = [...state.orders, action.payload];
     });
     builder.addCase(addOrderThunk.rejected, (state, action) => state);
   },
