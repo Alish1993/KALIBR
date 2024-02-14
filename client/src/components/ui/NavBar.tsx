@@ -1,14 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
-import { Link, Avatar, IconButton } from '@mui/material';
-
+import { Link, Avatar, Button } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setAvatarModalVisibility } from '../../redux/slices/modals/modalsSlice';
+import {
+  setAvatarModalVisibility,
+  setSignInModalVisibility,
+} from '../../redux/slices/modals/modalsSlice';
+import { signOutThunk } from '../../redux/slices/auth/authThunks';
 
 const linkStyle = {
   color: 'white',
@@ -38,11 +41,6 @@ export default function Navbar(): JSX.Element {
     <Box sx={{ flexGrow: 1, top: 0, width: '0.0001%', zIndex: 1000 }}>
       <AppBar position="static" sx={{ borderRadius: '20px' }}>
         <Toolbar>
-          <Avatar
-            alt="My Avatar"
-            src="photo_5341680620679583453_y.jpg"
-            sx={{ width: 100, height: 100, marginRight: 3 }}
-          />
           {links.map((link) => (
             <Link key={link.name} component={NavLink} to={link.to} sx={linkStyle}>
               <Typography
@@ -57,13 +55,40 @@ export default function Navbar(): JSX.Element {
               </Typography>
             </Link>
           ))}
+          {/* <Link component={NavLink} to='/' sx={linkStyle}>
+              <Typography
+                variant="h1"
+                component="div"
+                sx={{
+                  ...typographyStyle,
+                  color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                }}
+              >
+                SignOut
+              </Typography>
+            </Link> */}
+          <Button  onClick={() => void dispatch(signOutThunk())}>
+              Sign Out
+            </Button>
 
-          {user.status === 'logged' && (
+
+          {user.status === 'logged' ? (
             <Avatar
               alt="My Avatar"
               src={`http://localhost:3001/img/${user.avatar}`}
-              sx={{ width: 100, height: 100, marginLeft: 3 }}
-              onClick={() => {void dispatch(setAvatarModalVisibility(true))}}
+              sx={{ width: 100, height: 100, marginRight: 3 }}
+              onClick={() => {
+                void dispatch(setAvatarModalVisibility(true));
+              }}
+            />
+          ) : (
+            <Avatar
+              alt="My Avatar"
+              src="photo_5341680620679583453_y.jpg"
+              sx={{ width: 100, height: 100, marginRight: 3 }}
+              onClick={() => {
+                void dispatch(setSignInModalVisibility(true));
+              }}
             />
           )}
         </Toolbar>

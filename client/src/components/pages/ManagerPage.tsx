@@ -8,7 +8,7 @@ import OrderCard from '../ui/OrderCard';
 
 export default function ManagerPage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const orders = useAppSelector((store) => store.orders);
+  const orders = useAppSelector((store) => store.orders.orders);
   useEffect(() => {
     void dispatch(getOrdersThunk());
   }, []);
@@ -16,7 +16,7 @@ export default function ManagerPage(): JSX.Element {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {orders.map((order) => (
-        <OrderCard order={order}/>
+        <OrderCard key={order.id} order={order}/>
       ))}
     </List>
   );
