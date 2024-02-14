@@ -5,7 +5,6 @@ import { createTheme, Button, CssBaseline } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import MainPage from './components/pages/MainPage';
-import SignInPage from './components/pages/SignInPage';
 import Root from './components/ui/Root';
 import CalculatorPage from './components/pages/CalculatorPage';
 import ContactPage from './components/pages/ContactPage';
@@ -57,7 +56,6 @@ export default function App(): JSX.Element {
             <Routes>
               <Route path="/" element={<Root />}>
                 <Route index element={<MainPage />} />
-                <Route path="/signin" element={<SignInPage />} />
                 <Route path="/calculatorPage" element={<CalculatorPage />} />
                 <Route path="/contactPage" element={<ContactPage />} />
                 <Route path="/pricePage" element={<PricePage />} />
