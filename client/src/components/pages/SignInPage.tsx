@@ -12,6 +12,7 @@ export default function SignInPage(): JSX.Element {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget));
     void dispatch(signInThunk(formData as UserSignInType));
+    dispatch(setAvatarModalVisibility(false));
   };
 
   return (
@@ -25,23 +26,7 @@ export default function SignInPage(): JSX.Element {
         onSubmit={submitHandler}
         sx={{ marginTop: '5rem' }}
       >
-        <Grid item xs={12}>
-          <Typography variant="h1" align="center">
-            Sign In
-          </Typography>
-        </Grid>
-        <Grid item xs={22} textAlign="center">
-          <img
-            src="photo_5341680620679583453_y.jpg"
-            alt="Avatar"
-            style={{
-              width: '500px',
-              borderRadius: '20px',
-              marginBottom: '10px',
-              paddingLeft: ' -278px',
-            }}
-          />
-        </Grid>
+
         <Grid item xs={12}>
           <TextField
             fullWidth
