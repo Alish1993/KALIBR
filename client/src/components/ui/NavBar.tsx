@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import { Link, Avatar, Button } from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   setAvatarModalVisibility,
