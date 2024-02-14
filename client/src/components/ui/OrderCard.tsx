@@ -15,8 +15,13 @@ export default function OrderCard({ order }: OrderCardProperties): JSX.Element {
   return (
     <ListItem
       alignItems="flex-start"
+      sx={{ border: '1px solid #ccc' , marginTop: 2}}
       secondaryAction={
-        <IconButton edge="end" aria-label="delete" onClick={() => void dispatch(deleteOrderThunk(order.id))}>
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={() => void dispatch(deleteOrderThunk(order.id))}
+        >
           <DeleteIcon />
         </IconButton>
       }

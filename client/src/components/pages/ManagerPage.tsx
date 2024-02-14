@@ -12,12 +12,11 @@ export default function ManagerPage(): JSX.Element {
   useEffect(() => {
     void dispatch(getOrdersThunk());
   }, []);
-  console.log(orders);
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {orders.map((order) => (
-        <OrderCard key={order.id} order={order}/>
-      ))}
-    </List>
+<List sx={{ width: '100%', maxWidth: 560, bgcolor: 'background.paper', margin: 'auto', textAlign: 'center' }}>
+  {orders.map((order) => (
+    <OrderCard key={order.id} order={order}/>
+  ))}
+</List>
   );
 }

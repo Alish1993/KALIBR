@@ -22,7 +22,6 @@ const linkStyle = {
 const typographyStyle = { fontSize: '1.5rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' };
 
 export default function Navbar(): JSX.Element {
-
   const theme = useTheme();
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
@@ -30,47 +29,59 @@ export default function Navbar(): JSX.Element {
   const links = [
     { to: '/', name: 'Main' },
     { to: '/calculatorPage', name: 'Calculator' },
-    { to: '/signin', name: 'Login' },
     { to: '/contactPage', name: 'Contact' },
     { to: '/pricePage', name: 'Price' },
     { to: '/servicePage', name: 'Service' },
-    { to: '/manager', name: 'Manager' },
   ];
 
   return (
     <Box sx={{ flexGrow: 1, top: 0, width: '0.0001%', zIndex: 1000 }}>
       <AppBar position="static" sx={{ borderRadius: '20px' }}>
-        <Toolbar>
-          {links.map((link) => (
-            <Link key={link.name} component={NavLink} to={link.to} sx={linkStyle}>
-              <Typography
-                variant="h1"
-                component="div"
-                sx={{
-                  ...typographyStyle,
-                  color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                }}
-              >
-                {link.name}
-              </Typography>
-            </Link>
-          ))}
-          {/* <Link component={NavLink} to='/' sx={linkStyle}>
-              <Typography
-                variant="h1"
-                component="div"
-                sx={{
-                  ...typographyStyle,
-                  color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                }}
-              >
-                SignOut
-              </Typography>
-            </Link> */}
-          <Button  onClick={() => void dispatch(signOutThunk())}>
-              Sign Out
-            </Button>
-
+        <Toolbar >
+          {user.status === 'guest' &&
+            links.map((link) => (
+              <Link key={link.name} component={NavLink} to={link.to} sx={linkStyle}>
+                <Typography
+                  variant="h1"
+                  component="div"
+                  sx={{
+                    ...typographyStyle,
+                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                  }}
+                >
+                  {link.name}
+                </Typography>
+              </Link>
+            ))}
+          {user.status === 'logged' && (
+            <>
+              <Link component={NavLink} to="/manager" sx={linkStyle}>
+                <Typography
+                  variant="h1"
+                  component="div"
+                  sx={{
+                    ...typographyStyle,
+                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                  }}
+                >
+                  Orders
+                </Typography>
+              </Link>
+              <Button onClick={() => void dispatch(signOutThunk())} sx={linkStyle}>
+                {' '}
+                <Typography
+                  variant="h1"
+                  component="div"
+                  sx={{
+                    ...typographyStyle,
+                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                  }}
+                >
+                  SignOut
+                </Typography>
+              </Button>
+            </>
+          )}
 
           {user.status === 'logged' ? (
             <Avatar
@@ -96,11 +107,3 @@ export default function Navbar(): JSX.Element {
     </Box>
   );
 }
-
-const links = [
-  { to: '/', name: 'Main' },
-  { to: '/calculatorPage', name: 'Calculator' },
-  { to: '/signin', name: 'Login' },
-  { to: '/contactPage', name: 'Contact' },
-  { to: '/pricePage', name: 'Price' },
-];
