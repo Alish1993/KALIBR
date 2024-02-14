@@ -5,9 +5,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
-import { Link, Avatar, IconButton, Button } from '@mui/material';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Link, Avatar, Button } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   setAvatarModalVisibility,
@@ -69,16 +67,6 @@ export default function Navbar(): JSX.Element {
                 SignOut
               </Typography>
             </Link> */}
-          <IconButton
-            sx={{
-              color: theme.palette.mode === 'dark' ? 'white' : 'black',
-              width: 100,
-              height: 200,
-            }}
-            onClick={toggleTheme}
-          >
-            {theme.palette.mode === 'light' ? <Brightness7Icon /> : <DarkModeIcon />}
-          </IconButton>
           <Button  onClick={() => void dispatch(signOutThunk())}>
               Sign Out
             </Button>
