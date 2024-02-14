@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { TextField, Card, Box, Divider, Typography } from '@mui/material';
 import ViewInArSharpIcon from '@mui/icons-material/ViewInArSharp';
+import { useAppDispatch } from '../../redux/hooks';
+import { CalculatorTypeNoId } from '../../types/calculatorType';
+import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
 
 export default function CalculatorCardPackage(): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const [box, setBox] = React.useState('');
   const [roll, setRoll] = React.useState('');
   const [scotch, setScotch] = React.useState('');
@@ -35,6 +40,23 @@ export default function CalculatorCardPackage(): JSX.Element {
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
+   // отправка в стор
+   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData: CalculatorTypeNoId = {
+      amountMachine: 0,
+      machine: '',
+      time: 0,
+      path: 0,
+      amountLoader: 0,
+      workTime: 0,
+      box: parseInt(box),
+      roll: parseInt(roll),
+      scotch: parseInt(scotch),
+      stretchRoll: parseInt(stretchRoll),
+    };
+    dispatch(formServiceObject(formData));
+  };
   return (
     <Card variant="outlined" sx={{ margin: '10px' }}>
       <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>

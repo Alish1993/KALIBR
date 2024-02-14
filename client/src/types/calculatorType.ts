@@ -17,3 +17,5 @@ export type CalculatorType = {
   export type CalculatorLoaderType = Omit<CalculatorType, 'id' | 'amountMachine' | 'machine' | 'time' | 'path' | 'box' | 'roll' | 'scotch' | 'stretchRoll'>;
   export type CalculatorPackageType = Omit<CalculatorType, 'id' | 'amountMachine' | 'machine' | 'time' | 'path' | 'amountLoader' | 'workTime'>;
   export type CalculatorTypeNoId = Omit<CalculatorType, 'id'>;
+
+  export type CalculatorAmountLoaderType = Omit<CalculatorType, 'id' | 'amountMachine' | 'machine' | 'time' | 'path' | 'workTime' | 'box' | 'roll' | 'scotch' | 'stretchRoll'>;

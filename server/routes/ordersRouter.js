@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Order } = require('../db/models');
-
+const { Service } = require('../db/models');
 const router = Router();
 
 router
@@ -13,11 +13,29 @@ router
       return res.sendStatus(500);
     }
   })
-  .post(async (req, res) => {
+  // .post(async (req, res) => {
+  //   try {
+  //     const order = await Order.create(req.body);
+  //     return res.json(order);
+  //   } catch (error) {
+  //     return res.sendStatus(500);
+  //   }
+  // });
+
+  router.post(async (req, res) => {
     try {
-      const order = await Order.create(req.body);
+      const { name, phone, email, ...serviceData } = req.body;
+      
+      const order = await Order.create({
+        name,
+        phone,
+        email
+      });
+      
+      const service = await Service.create({...serviceData, order_id: order.id});
       return res.json(order);
     } catch (error) {
+      console.error('Error creating order:', error);
       return res.sendStatus(500);
     }
   });

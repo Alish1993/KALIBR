@@ -8,11 +8,43 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      amountMachine: {
+        type: Sequelize.INTEGER,
+      },
+      machine: {
         type: Sequelize.STRING,
       },
-      price: {
+      time: {
         type: Sequelize.INTEGER,
+      },
+      path: {
+        type: Sequelize.INTEGER,
+      },
+      amountLoader: {
+        type: Sequelize.INTEGER,
+      },
+      workTime: {
+        type: Sequelize.INTEGER,
+      },
+      box: {
+        type: Sequelize.INTEGER,
+      },
+      roll: {
+        type: Sequelize.INTEGER,
+      },
+      scotch: {
+        type: Sequelize.INTEGER,
+      },
+      stretchRoll: {
+        type: Sequelize.INTEGER,
+      },
+      order_id: {
+        type: Sequelize.INTEGER,
+        references: {       
+          model: 'Orders',
+          key: 'id',
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

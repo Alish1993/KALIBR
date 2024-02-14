@@ -2,13 +2,20 @@ import * as React from 'react';
 import { Box, Card, Typography, TextField, Divider, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material';
 import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
+import { CalculatorTypeNoId } from '../../types/calculatorType';
+import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 export default function CalculatorCardAuto(): JSX.Element {
-  const [machine, setMachine] = React.useState(''); // селект для выбора машины
+  const dispatch = useAppDispatch();
+
   const [amount, setAmount] = React.useState(''); // инпут для кол-ва машин
+  const [machine, setMachine] = React.useState(''); // селект для выбора машины
   const [time, setTime] = React.useState(''); // инпут для времени работы
   const [path, setPath] = React.useState(''); // инпут для выбора расстояния
   const [isMachineSelected, setIsMachineSelected] = React.useState(false); // анимация машины
+
+  
 
   // для анимации при выборе машины
   const handleChange = (event: SelectChangeEvent<string>) => {
@@ -33,6 +40,24 @@ export default function CalculatorCardAuto(): JSX.Element {
     setPath(event.target.value);
     setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
     setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
+  };
+
+   // отправка в стор
+   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData: CalculatorTypeNoId = {
+      amountMachine: parseInt(amount),
+      machine: machine,
+      time: parseInt(time),
+      path: parseInt(path),
+      amountLoader: 0,
+      workTime: 0,
+      box: 0,
+      roll: 0,
+      scotch: 0,
+      stretchRoll: 0,
+    };
+    dispatch(formServiceObject(formData));
   };
 
   return (

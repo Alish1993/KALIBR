@@ -38,9 +38,6 @@ export default function CalculatorPage(): JSX.Element {
             0 руб.
           </Typography>
         </Box>
-        <Box sx={{ mb: 4 }}>
-          <TextField label="Номер телефона" variant="outlined" fullWidth />
-        </Box>
         <OrderModal />
         <Button
           variant="contained"
