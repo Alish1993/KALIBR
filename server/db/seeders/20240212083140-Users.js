@@ -7,19 +7,28 @@ module.exports = {
       'Users',
       [
         {
+          username: 'admin',
+          email: 'admin@admin',
+          password: bcrypt.hashSync('123', 10),
+          isAdmin: true,
+        },
+        {
           username: 'John Doe',
           email: 'q@q',
           password: bcrypt.hashSync('123', 10),
+          isAdmin: false,
         },
         {
           username: 'Some Body',
           email: 'w@w',
           password: bcrypt.hashSync('123', 10),
+          isAdmin: false,
         },
         {
           username: 'Another Body',
           email: 'e@e',
           password: bcrypt.hashSync('123', 10),
+          isAdmin: false,
         },
       ],
       {},

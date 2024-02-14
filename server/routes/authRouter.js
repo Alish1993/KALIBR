@@ -10,6 +10,31 @@ const upload = require('../middlewares/multer');
 
 const router = Router();
 
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll({ where: { isAdmin: false } });
+    const plainUsers = users.map((user) => {
+      const plainUser = user.get();
+      delete plainUser.password;
+      return plainUser;
+    });
+    return res.json(plainUsers);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.destroy({ where: { id } });
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 

@@ -15,6 +15,8 @@ import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
 import ManagerPage from './components/pages/ManagerPage';
 import SignInModal from './components/ui/SignInModal';
+import AdminPage from './components/pages/AdminPage';
+import CreateUserModal from './components/ui/CreateUserModal';
 
 const lightTheme = createTheme({
   palette: {
@@ -46,6 +48,7 @@ export default function App(): JSX.Element {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Loader isLoading={user.status === 'pending'}>
         <>
+          <CreateUserModal />
           <AvatarModal />
           <SignInModal />
           <CssBaseline />
@@ -60,6 +63,7 @@ export default function App(): JSX.Element {
                 <Route path="/contactPage" element={<ContactPage />} />
                 <Route path="/pricePage" element={<PricePage />} />
                 <Route path="/manager" element={<ManagerPage />} />
+                <Route path="/admin" element={<AdminPage />} />
               </Route>
             </Routes>
           </Router>
