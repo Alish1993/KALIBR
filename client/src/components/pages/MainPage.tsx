@@ -128,57 +128,142 @@ export default function MainPage(): JSX.Element {
           }}
         >
           <div>
-            <Tabs value={value} variant="fullWidth">
-              {tabContent.map((tab, index) => (
-                <Tab style={{ fontSize: '32px' }} key={index} label={tab.label} />
-              ))}
+            <Tabs
+              value={value}
+              variant="fullWidth"
+              onChange={(event, newValue) => setValue(newValue)}
+            >
+              <Tab style={{ fontSize: '32px' }} label={tabContent[0].label} />
+              <Tab style={{ fontSize: '32px' }} label={tabContent[1].label} />
+              <Tab style={{ fontSize: '32px' }} label={tabContent[2].label} />
             </Tabs>
 
             <div style={{ marginTop: '10px' }}>
-              {tabContent.map((tab, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    display: value === index ? 'block' : 'none',
+              <Box
+                sx={{
+                  display: value === 0 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      width: '100%',
-                      height: '300px',
-                      background: 'rgba(0, 0, 0, 0.04)',
-                      borderRadius: '20px',
-                    }}
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px' }}
+                      src={tabContent[0].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '100px', display: 'flex', alignItems: 'center' }}
                   >
-                    <Grid container justifyContent="space-between" alignItems="center">
-                      <Grid item xs={3}>
-                        <img
-                          style={{ borderRadius: '20px' }}
-                          src={tab.img}
-                          alt="description"
-                          width="440px"
-                        />
-                      </Grid>
-                      <div
-                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                      >
-                        <Grid item xs={6}>
-                          <div>
-                            <Typography variant="h5">{tab.text}</Typography>
-                          </div>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Button variant="contained" endIcon={tab.icon}>
-                            Button
-                          </Button>
-                        </Grid>
-                      </div>
-                    </Grid>
-                  </div>
-                </Box>
-              ))}
+                    <div>
+                      <Typography variant="h5">{tabContent[0].text}</Typography>
+                      <Button variant="contained" endIcon={tabContent[0].icon}>
+                        Button
+                      </Button>
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
+
+              <Box
+                sx={{
+                  display: value === 1 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
+                  }}
+                >
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px' }}
+                      src={tabContent[1].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}
+                  >
+                    <div>
+                      <Typography variant="h5">{tabContent[1].text}</Typography>
+                      <Button variant="contained" endIcon={tabContent[1].icon}>
+                        Button
+                      </Button>
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
+
+              <Box
+                sx={{
+                  display: value === 2 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
+                  }}
+                >
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px'}}
+                      src={tabContent[2].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}
+                  >
+                    <div>
+                      <Typography variant="h5">{tabContent[2].text}</Typography>
+                      <Button variant="contained" endIcon={tabContent[2].icon}>
+                        Button
+                      </Button>
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
             </div>
           </div>
         </Box>
