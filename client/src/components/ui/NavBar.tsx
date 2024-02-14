@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,7 +8,6 @@ import { NavLink } from 'react-router-dom';
 import { Link, Avatar, IconButton, Button } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ThemeContext } from '@emotion/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   setAvatarModalVisibility,
@@ -25,7 +24,7 @@ const linkStyle = {
 const typographyStyle = { fontSize: '1.5rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' };
 
 export default function Navbar(): JSX.Element {
-  const { toggleTheme } = useContext(ThemeContext);
+
   const theme = useTheme();
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
@@ -109,3 +108,11 @@ export default function Navbar(): JSX.Element {
     </Box>
   );
 }
+
+const links = [
+  { to: '/', name: 'Main' },
+  { to: '/calculatorPage', name: 'Calculator' },
+  { to: '/signin', name: 'Login' },
+  { to: '/contactPage', name: 'Contact' },
+  { to: '/pricePage', name: 'Price' },
+];
