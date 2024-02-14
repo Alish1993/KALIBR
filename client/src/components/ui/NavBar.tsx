@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import { Link, Avatar, Button } from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   setAvatarModalVisibility,
@@ -33,7 +34,6 @@ export default function Navbar(): JSX.Element {
     { to: '/signin', name: 'Login' },
     { to: '/contactPage', name: 'Contact' },
     { to: '/pricePage', name: 'Price' },
-    { to: '/servicePage', name: 'Service' },
     { to: '/manager', name: 'Manager' },
   ];
 
@@ -97,10 +97,3 @@ export default function Navbar(): JSX.Element {
   );
 }
 
-const links = [
-  { to: '/', name: 'Main' },
-  { to: '/calculatorPage', name: 'Calculator' },
-  { to: '/signin', name: 'Login' },
-  { to: '/contactPage', name: 'Contact' },
-  { to: '/pricePage', name: 'Price' },
-];
