@@ -107,7 +107,7 @@ export default function CalculatorCardLoader(): JSX.Element {
           {/* выбор кол-ва часов работы грузчиков конец */}
         </Box>
       </Box>
-      <style jsx>{`
+      <style>{`
          @keyframes moveUp {
            0% {
              transform: translateY(0);

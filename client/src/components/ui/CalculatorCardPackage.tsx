@@ -127,7 +127,7 @@ export default function CalculatorCardPackage(): JSX.Element {
           </Box>
         </Box>
       </Box>
-      <style jsx>{`
+      <style>{`
          @keyframes rotate {
            0% {
              transform: rotate(0deg);

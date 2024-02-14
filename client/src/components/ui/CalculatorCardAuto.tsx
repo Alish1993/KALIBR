@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box, Card, Typography, TextField, Divider, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@mui/material';
+import { SelectChangeEvent } from '@mui/material';
 import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
 
 export default function CalculatorCardAuto(): JSX.Element {
@@ -10,7 +11,7 @@ export default function CalculatorCardAuto(): JSX.Element {
   const [isMachineSelected, setIsMachineSelected] = React.useState(false); // анимация машины
 
   // для анимации при выборе машины
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: SelectChangeEvent<string>) => {
     setMachine(event.target.value as string);
     setIsMachineSelected(true);
     setTimeout(() => setIsMachineSelected(false), 500);
@@ -147,7 +148,7 @@ export default function CalculatorCardAuto(): JSX.Element {
         </Box>
       </Box>
           {/* CSS анимация ухода машины за границы */}
-      <style jsx>{`
+      <style>{`
          @keyframes moveOut {
            0% {
              transform: translateX(0);

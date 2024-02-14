@@ -1,7 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
 import {  CalculatorTypeNoId } from '../../../types/calculatorType';
-
 
 type ServiceState = { services: CalculatorTypeNoId; };
 const initialState: ServiceState = { services: {
