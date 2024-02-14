@@ -15,6 +15,7 @@ import Loader from './components/hocs/Loader';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
 import ManagerPage from './components/pages/ManagerPage';
+import SignInModal from './components/ui/SignInModal';
 
 const lightTheme = createTheme({
   palette: {
@@ -47,6 +48,7 @@ export default function App(): JSX.Element {
       <Loader isLoading={user.status === 'pending'}>
         <>
           <AvatarModal />
+          <SignInModal />
           <CssBaseline />
           <Button onClick={toggleDarkMode}>
             {isDarkMode ? <DarkModeIcon /> : <Brightness7Icon />}
