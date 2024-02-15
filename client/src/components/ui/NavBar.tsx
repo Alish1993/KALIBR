@@ -73,6 +73,18 @@ export default function Navbar(): JSX.Element {
                   Orders
                 </Typography>
               </Link>
+              <Link component={NavLink} to="/admin" sx={linkStyle}>
+                <Typography
+                  variant="h1"
+                  component="div"
+                  sx={{
+                    ...typographyStyle,
+                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                  }}
+                >
+                  Admin
+                </Typography>
+              </Link>
               <Button onClick={() => void dispatch(signOutThunk())} sx={linkStyle}>
                 {' '}
                 <Typography

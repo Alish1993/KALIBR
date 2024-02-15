@@ -17,6 +17,9 @@ import ManagerPage from './components/pages/ManagerPage';
 import SignInModal from './components/ui/SignInModal';
 import PriceaaAllPage from './components/pages/PriceaaAllPage';
 import ServicePage from './components/pages/ServicePage';
+import CreateUserModal from './components/ui/CreateUserModal';
+import AdminPage from './components/pages/AdminPage';
+
 
 const lightTheme = createTheme({
   palette: {
@@ -48,6 +51,7 @@ export default function App(): JSX.Element {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Loader isLoading={user.status === 'pending'}>
         <>
+          <CreateUserModal />
           <AvatarModal />
           <SignInModal />
           <CssBaseline />
@@ -63,6 +67,7 @@ export default function App(): JSX.Element {
                 <Route path="/manager" element={<ManagerPage />} />
                 <Route path="/priceAllPage" element={<PriceaaAllPage />} />
                 <Route path="/service" element={<ServicePage />} />
+                <Route path="/admin" element={<AdminPage />} />
               </Route>
             </Routes>
           </Router>
