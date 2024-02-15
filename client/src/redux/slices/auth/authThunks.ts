@@ -37,7 +37,18 @@ export const getUsersThunk = createAsyncThunk<UserType[]>('auth/getUsers', async
   return data;
 });
 
-export const deleteUserThunk = createAsyncThunk<UserType['id'], UserType['id']>('auth/deleteUser', async (id) => {
-  const data = await AuthService.deleteUser(id);
-  return id
-})
+export const deleteUserThunk = createAsyncThunk<UserType['id'], UserType['id']>(
+  'auth/deleteUser',
+  async (id) => {
+    await AuthService.deleteUser(id);
+    return id;
+  },
+);
+
+export const createUserThunk = createAsyncThunk<UserType, UserSignInType>(
+  'auth/createUser',
+  async (formData) => {    
+    const data = await AuthService.createUser(formData);
+    return data;
+  },
+);

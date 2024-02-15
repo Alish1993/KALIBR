@@ -2,6 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import {
   checkUserThunk,
+  createUserThunk,
   deleteUserThunk,
   getUsersThunk,
   refreshTokenThunk,
@@ -72,6 +73,11 @@ const authSlice = createSlice({
       state.users = state.users.filter((user) => user.id !== action.payload);
     });
     builder.addCase(deleteUserThunk.rejected, (state, action) => state);
+
+    builder.addCase(createUserThunk.fulfilled, (state, action) => {
+      state.users = [action.payload, ...state.users];
+    });
+    builder.addCase(createUserThunk.rejected, (state, action) => state);
   },
 });
 
