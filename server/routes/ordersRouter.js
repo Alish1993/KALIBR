@@ -1,5 +1,17 @@
 const { Router } = require('express');
+const TelegramBot = require('node-telegram-bot-api');
 const { Order } = require('../db/models');
+
+const token = '6762356713:AAHwlJ-PAfwNHustJOIokMKBsmwoH6HHJSY';
+
+const chatId1 = 5547151389;
+const bot = new TelegramBot(token, { polling: true });
+const now = new Date();
+console.log(now.getFullYear(), now.getMonth(), now.getDate());
+function sendAdminMessage(message) {
+  bot.sendMessage(chatId1, message);
+  console.log(message);
+}
 
 const router = Router();
 
@@ -15,8 +27,12 @@ router
   })
   .post(async (req, res) => {
     try {
-      const order = await Order.create(req.body);
-      return res.json(order);
+      const { name, email, phone } = req.body;
+      const order = await Order.create({ name, email, phone });
+
+      const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
+      sendAdminMessage(message);
+      res.status(201).json(order);
     } catch (error) {
       return res.sendStatus(500);
     }
