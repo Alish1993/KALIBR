@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextField, Card, Box, Divider, Typography } from '@mui/material';
 import ViewInArSharpIcon from '@mui/icons-material/ViewInArSharp';
 import { useAppDispatch } from '../../redux/hooks';
-import { CalculatorTypeNoId } from '../../types/calculatorType';
+import type { CalculatorTypeNoId } from '../../types/calculatorType';
 import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
 
 export default function CalculatorCardPackage(): JSX.Element {
@@ -17,46 +17,67 @@ export default function CalculatorCardPackage(): JSX.Element {
 
   // анимация коробки при выборе их количества
   const handleChangeBox = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBox(event.target.value as string);
+    const boxPackageValue = event.target.value;
+    setBox(boxPackageValue);
+    const formData: CalculatorTypeNoId = {
+           box: parseInt(boxPackageValue),
+         } as CalculatorTypeNoId;
+         dispatch(formServiceObject(formData));
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
   const handleChangeRoll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRoll(event.target.value as string);
+    const rollPackageValue = event.target.value;
+    setRoll(rollPackageValue);
+    const formData: CalculatorTypeNoId = {
+      roll: parseInt(rollPackageValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
   const handleChangeScotch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setScotch(event.target.value as string);
+    const scotchPackageValue = event.target.value;
+    setScotch(scotchPackageValue);
+    const formData: CalculatorTypeNoId = {
+      scotch: parseInt(scotchPackageValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
   const handleChangeStretchRoll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStretchRoll(event.target.value as string);
+    const stretchRollPackageValue = event.target.value;
+    setStretchRoll(stretchRollPackageValue);
+    const formData: CalculatorTypeNoId = {
+      stretchRoll: parseInt(stretchRollPackageValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
     setIsPackageSelected(true);
     setTimeout(() => setIsPackageSelected(false), 300);
   };
 
-   // отправка в стор
-   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData: CalculatorTypeNoId = {
-      amountMachine: 0,
-      machine: '',
-      time: 0,
-      path: 0,
-      amountLoader: 0,
-      workTime: 0,
-      box: parseInt(box),
-      roll: parseInt(roll),
-      scotch: parseInt(scotch),
-      stretchRoll: parseInt(stretchRoll),
-    };
-    dispatch(formServiceObject(formData));
-  };
+  //  // отправка в стор
+  //  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const formData: CalculatorTypeNoId = {
+  //     amountMachine: 0,
+  //     machine: '',
+  //     time: 0,
+  //     path: 0,
+  //     amountLoader: 0,
+  //     workTime: 0,
+  //     box: parseInt(box),
+  //     roll: parseInt(roll),
+  //     scotch: parseInt(scotch),
+  //     stretchRoll: parseInt(stretchRoll),
+  //   };
+  //   dispatch(formServiceObject(formData));
+  // };
+
   return (
     <Card variant="outlined" sx={{ margin: '10px' }}>
       <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>

@@ -1,5 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import {  CalculatorTypeNoId } from '../../../types/calculatorType';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type {  CalculatorTypeNoId } from '../../../types/calculatorType';
 
 // type ServiceState = { services: CalculatorTypeNoId; };
 // const initialState: ServiceState = { services: {
@@ -15,8 +16,12 @@ import {  CalculatorTypeNoId } from '../../../types/calculatorType';
 //     stretchRoll: 0,
 // }, };
 
-interface ServiceState {
-  services: Partial<CalculatorTypeNoId>; // Используйте Partial, чтобы все поля были необязательными
+// interface ServiceState {
+//   services: Partial<CalculatorTypeNoId>; // Используйте Partial, чтобы все поля были необязательными
+// }
+
+type ServiceState = {
+  services: Partial<CalculatorTypeNoId>;
 }
 
 const initialState: ServiceState = {

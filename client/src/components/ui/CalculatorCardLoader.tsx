@@ -3,7 +3,7 @@ import { Card, Box, Divider, Typography, TextField } from '@mui/material';
 import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';
 import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
 import { useAppDispatch } from '../../redux/hooks';
-import { CalculatorAmountLoaderType, CalculatorTypeNoId } from '../../types/calculatorType';
+import type { CalculatorTypeNoId } from '../../types/calculatorType';
 
 export default function CalculatorCardLoader(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,17 +14,17 @@ export default function CalculatorCardLoader(): JSX.Element {
   const [isLoaderSelected, setIsLoaderSelected] = React.useState(false); // анимация грузчика
 
   // анимация грузчика при выборе их количества
+   // рабочая версия!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setAmountLoader(event.target.value as string);
   //   setIsLoaderSelected(true);
   //   setTimeout(() => setIsLoaderSelected(false), 300);
   // };
+  // рабочая версия!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-  //Версия для работы!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     const amountValue = event.target.value;
-    setAmountLoader(amountValue);//или setAmountLoader(amountValue.toString());
+    setAmountLoader(amountValue); // или setAmountLoader(amountValue.toString());
     const formData: CalculatorTypeNoId = {
       amountLoader: parseInt(amountValue),
     } as CalculatorTypeNoId;
@@ -32,8 +32,7 @@ export default function CalculatorCardLoader(): JSX.Element {
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
-  //Версия для работы!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+ 
 
   // const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setTimeloader(event.target.value as string);
@@ -43,20 +42,11 @@ export default function CalculatorCardLoader(): JSX.Element {
   // };
 
   const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const timeValue = parseInt(event.target.value);
-    setTimeloader(event.target.value);
+    const timeValue = event.target.value;
+    setTimeloader(timeValue);
     const formData: CalculatorTypeNoId = {
-      amountMachine: 0, 
-      machine: "",
-      time: 0,
-      path: 0,
-      amountLoader: 0, 
-      workTime: parseInt(timeValue), 
-      box: 0, 
-      roll: 0, 
-      scotch: 0,
-      stretchRoll: 0,
-    };
+      workTime: parseInt(timeValue),
+    } as CalculatorTypeNoId;;
     dispatch(formServiceObject(formData));
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
@@ -65,37 +55,11 @@ export default function CalculatorCardLoader(): JSX.Element {
   // запасной вариант для отправки в стор
   // React.useEffect(() => {
   //   const formData: CalculatorTypeNoId = {
-  //     amountMachine: 0,
-  //     machine: '',
-  //     time: 0,
-  //     path: 0,
   //     amountLoader: parseInt(amountLoader),
   //     workTime: parseInt(timeLoader),
-  //     box: 0,
-  //     roll: 0,
-  //     scotch: 0,
-  //     stretchRoll: 0,
   //   };
   //   dispatch(formServiceObject(formData));
   // }, [amountLoader, timeLoader]); // зависимости: amountLoader и timeLoader
-
-  // отправка в стор - нерабочий вариант, т.к. некуда вешать сабмит
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const formData: CalculatorTypeNoId = {
-  //     amountMachine: 0,
-  //     machine: '',
-  //     time: 0,
-  //     path: 0,
-  //     amountLoader: parseInt(amountLoader),
-  //     workTime: parseInt(timeLoader),
-  //     box: 0,
-  //     roll: 0,
-  //     scotch: 0,
-  //     stretchRoll: 0,
-  //   };
-  //   dispatch(formServiceObject(formData));
-  // };
 
   return (
     <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>
@@ -103,12 +67,16 @@ export default function CalculatorCardLoader(): JSX.Element {
         {/* Левая часть */}
         <Box sx={{ flex: '1 0 33%' }}>
           <Typography gutterBottom variant="h5" component="div">
-          Грузчики
+            Грузчики
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <PeopleAltSharpIcon sx={{ marginRight: 1,
-            fontSize: '3.5rem',
-            animation: isLoaderSelected ? 'moveUp 0.9s forwards 3' : null, }} />
+            <PeopleAltSharpIcon
+              sx={{
+                marginRight: 1,
+                fontSize: '3.5rem',
+                animation: isLoaderSelected ? 'moveUp 0.9s forwards 3' : null,
+              }}
+            />
             {/* Изображение вставлено здесь */}
           </Box>
           <Typography color="text.secondary" variant="body2">
@@ -122,15 +90,13 @@ export default function CalculatorCardLoader(): JSX.Element {
           {/* выбор кол-ва грузчиков начало */}
           <Box
             component="form"
-            sx={{ margin: '10px',
-              '& > :not(style)': { m: 1, width: '35ch' },
-            }}
+            sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
             noValidate
             autoComplete="off"
           >
             <TextField
               id="amountLoader"
-              sx={{ backgroundColor: '#ffffff'}}
+              sx={{ backgroundColor: '#ffffff' }}
               label="Кол-во грузчиков"
               value={amountLoader}
               onChange={handleChangeLoader}
@@ -141,15 +107,13 @@ export default function CalculatorCardLoader(): JSX.Element {
           {/* выбор кол-ва часов работы грузчиков начало */}
           <Box
             component="form"
-            sx={{ margin: '10px',
-              '& > :not(style)': { m: 1, width: '35ch' },
-            }}
+            sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
             noValidate
             autoComplete="off"
           >
             <TextField
               id="workTime"
-              sx={{ backgroundColor: '#ffffff'}}
+              sx={{ backgroundColor: '#ffffff' }}
               label="Время работы"
               value={timeLoader}
               onChange={handleChangeTimeLoader}

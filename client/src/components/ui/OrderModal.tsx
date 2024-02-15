@@ -28,7 +28,8 @@ export default function OrderModal(): JSX.Element {
       [name]: value,
     }));
   };
-
+  
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.email) {
