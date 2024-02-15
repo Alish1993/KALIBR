@@ -3,9 +3,10 @@ export type UserType = {
   username: string;
   email: string;
   avatar: string | null;
+  isAdmin: boolean;
 };
 
-export type UserSignInType = Omit<UserType, 'id'>;
+export type UserSignInType = Omit<UserType, 'id' | 'isAdmin'>;
 
 export type UserStateType =
   | { status: 'pending' }

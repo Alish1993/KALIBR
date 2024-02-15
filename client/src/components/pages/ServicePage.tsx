@@ -44,7 +44,7 @@ const services = [
   'Грузоперевозки',
 ];
 
-function PricePage(): JSX.Element {
+function ServicePage(): JSX.Element {
   return (
     <Container maxWidth="md" sx={{ marginTop: '6rem' }}>
       <Typography variant="h1" align="center" gutterBottom>
@@ -75,4 +75,4 @@ function PricePage(): JSX.Element {
   );
 }
 
-export default PricePage;
+export default ServicePage;
