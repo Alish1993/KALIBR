@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -24,6 +24,7 @@ const typographyStyle = { fontSize: '1.5rem', textShadow: '2px 2px 4px rgba(0, 0
 
 export default function Navbar(): JSX.Element {
   const theme = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(theme.palette.mode === 'dark');
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
 
@@ -31,13 +32,18 @@ export default function Navbar(): JSX.Element {
     { to: '/', name: 'Main' },
     { to: '/calculatorPage', name: 'Calculator' },
     { to: '/contactPage', name: 'Contact' },
-    { to: '/pricePage', name: 'Price' },
+    { to: '/service', name: 'Services' },
+    { to: '/priceAllPage', name: 'PraceAll' },
   ];
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, top: 0, width: '0.0001%', zIndex: 1000 }}>
-      <AppBar position="static" sx={{ borderRadius: '20px' }}>
-        <Toolbar >
+    <Box sx={{ flexGrow: 1, top: 0, zIndex: 1000 }}>
+      <AppBar position="static" sx={{ borderRadius: '20px', backgroundColor: isDarkMode ? 'black' : 'white' }}>
+        <Toolbar>
           {user.status === 'guest' &&
             links.map((link) => (
               <Link key={link.name} component={NavLink} to={link.to} sx={linkStyle}>
@@ -46,7 +52,7 @@ export default function Navbar(): JSX.Element {
                   component="div"
                   sx={{
                     ...typographyStyle,
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    color: isDarkMode ? 'white' : 'black',
                   }}
                 >
                   {link.name}
@@ -61,7 +67,7 @@ export default function Navbar(): JSX.Element {
                   component="div"
                   sx={{
                     ...typographyStyle,
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    color: isDarkMode ? 'white' : 'black',
                   }}
                 >
                   Orders
@@ -86,7 +92,7 @@ export default function Navbar(): JSX.Element {
                   component="div"
                   sx={{
                     ...typographyStyle,
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    color: isDarkMode ? 'white' : 'black',
                   }}
                 >
                   SignOut
@@ -114,6 +120,10 @@ export default function Navbar(): JSX.Element {
               }}
             />
           )}
+
+          <Button onClick={toggleDarkMode} sx={{ color: isDarkMode ? 'white' : 'black' , borderRadius: '20px' }}>
+            {isDarkMode ? 'Light' : 'Dark'}
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
