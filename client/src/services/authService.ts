@@ -42,6 +42,11 @@ class AuthService {
   static async deleteUser(id: UserType['id']): Promise<AxiosResponse> {
     return authApiService.delete(`/auth/${id}`);
   }
+
+  static async createUser(formData: UserSignInType): Promise<UserType> {
+    const { data } = await authApiService.post<UserType>('/auth', formData);
+    return data;
+  }
 }
 
 export default AuthService;

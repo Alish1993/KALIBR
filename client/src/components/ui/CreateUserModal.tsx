@@ -7,9 +7,12 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
-  TextField} from '@mui/material';
+  TextField,
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setToggleCreateUserModalVisibilit } from '../../redux/slices/modals/modalsSlice';
+import { createUserThunk } from '../../redux/slices/auth/authThunks';
+import type { UserSignInType } from '../../types/authTypes';
 
 export default function CreateUserModal(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,7 +25,7 @@ export default function CreateUserModal(): JSX.Element {
   const submitHandler: React.ChangeEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget));
-    // void dispatch(signInThunk(formData as UserSignInType));
+    void dispatch(createUserThunk(formData as UserSignInType));
     dispatch(setToggleCreateUserModalVisibilit(false));
   };
 
@@ -44,11 +47,11 @@ export default function CreateUserModal(): JSX.Element {
           component="form"
           onSubmit={submitHandler}
         >
-                    <Grid item xs={12}>
+          <Grid item xs={12}>
             <TextField
               fullWidth
-              name="name"
-              label="name"
+              name="username"
+              label="username"
               type="text"
               style={{ textAlign: 'center', borderRadius: '50px', marginBottom: '10px' }}
             />

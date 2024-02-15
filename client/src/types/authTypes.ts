@@ -17,3 +17,4 @@ export type AuthStateType = {
   accessToken: string;
   user: UserType;
 };
+
