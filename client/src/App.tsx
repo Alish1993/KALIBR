@@ -8,15 +8,18 @@ import MainPage from './components/pages/MainPage';
 import Root from './components/ui/Root';
 import CalculatorPage from './components/pages/CalculatorPage';
 import ContactPage from './components/pages/ContactPage';
-import PricePage from './components/pages/PricePage';
+
 import AvatarModal from './components/ui/AvatarModal';
 import Loader from './components/hocs/Loader';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkUserThunk } from './redux/slices/auth/authThunks';
 import ManagerPage from './components/pages/ManagerPage';
 import SignInModal from './components/ui/SignInModal';
-import AdminPage from './components/pages/AdminPage';
+import PriceaaAllPage from './components/pages/PriceaaAllPage';
+import ServicePage from './components/pages/ServicePage';
 import CreateUserModal from './components/ui/CreateUserModal';
+import AdminPage from './components/pages/AdminPage';
+
 
 const lightTheme = createTheme({
   palette: {
@@ -61,8 +64,9 @@ export default function App(): JSX.Element {
                 <Route index element={<MainPage />} />
                 <Route path="/calculatorPage" element={<CalculatorPage />} />
                 <Route path="/contactPage" element={<ContactPage />} />
-                <Route path="/pricePage" element={<PricePage />} />
                 <Route path="/manager" element={<ManagerPage />} />
+                <Route path="/priceAllPage" element={<PriceaaAllPage />} />
+                <Route path="/service" element={<ServicePage />} />
                 <Route path="/admin" element={<AdminPage />} />
               </Route>
             </Routes>
