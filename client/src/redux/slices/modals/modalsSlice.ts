@@ -2,8 +2,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 type OrderFormData = { name: string; phone: string; email: string; };//добавлено
-type ModalsState = { toggleAvatarModal: boolean , toggleSignInModal: boolean, toggleOrderModal: boolean, orderFormData: OrderFormData | null;};//добавлено orderFormData: OrderFormData | null
-const initialState: ModalsState = { toggleAvatarModal: false, toggleSignInModal: false, toggleOrderModal: false, orderFormData: null };//добавлено orderFormData: null
+type ModalsState = { toggleCreateUserModal: boolean, toggleAvatarModal: boolean , toggleSignInModal: boolean, toggleOrderModal: boolean, orderFormData: OrderFormData | null;};//добавлено orderFormData: OrderFormData | null
+const initialState: ModalsState = { toggleCreateUserModal: false, toggleAvatarModal: false, toggleSignInModal: false, toggleOrderModal: false, orderFormData: null };//добавлено orderFormData: null
 
 const modalsSlice = createSlice({
   name: 'modals',
@@ -22,10 +22,13 @@ const modalsSlice = createSlice({
     setOrderFormData: (state, action: PayloadAction<OrderFormData>) => {
       state.orderFormData = action.payload;
     },
+    setToggleCreateUserModalVisibilit: (state, action: PayloadAction<boolean>) => {
+      state.toggleCreateUserModal = action.payload;
+    }
   },
 });
 
-export const { setAvatarModalVisibility, setSignInModalVisibility, setToggleOrderModal, setOrderFormData } = modalsSlice.actions;//добавлено setOrderFormData
+export const { setToggleCreateUserModalVisibilit, setAvatarModalVisibility, setSignInModalVisibility, setToggleOrderModal, setOrderFormData } = modalsSlice.actions;//добавлено setOrderFormData
 
 
 export default modalsSlice.reducer;

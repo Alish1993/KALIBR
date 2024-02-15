@@ -21,10 +21,9 @@ export const getOrdersThunk = createAsyncThunk<OrderType[]>('orders/getOrders', 
 // );
 export const addOrderThunk = createAsyncThunk<OrderType, OrderFormType>(
   'orders/addOrder',
-  async (formData, { dispatch }) => {
+  async (dataToSend) => {
     try {
-      const data = await OrderService.createOrder(formData);
-      dispatch(setOrderFormData(formData));
+      const data = await OrderService.createOrder(dataToSend);
       return data;
     } catch (error) {
       console.error('Ошибка отправки данных заказа:', error);

@@ -1,44 +1,46 @@
 const { Router } = require('express');
 const { Order } = require('../db/models');
 const { Service } = require('../db/models');
+
 const router = Router();
 
-router
-  .route('/')
-  .get(async (req, res) => {
-    try {
-      const orders = await Order.findAll();
-      return res.json(orders);
-    } catch (error) {
-      return res.sendStatus(500);
-    }
-  })
-  // .post(async (req, res) => {
-  //   try {
-  //     const order = await Order.create(req.body);
-  //     return res.json(order);
-  //   } catch (error) {
-  //     return res.sendStatus(500);
-  //   }
-  // });
+router.route('/').get(async (req, res) => {
+  try {
+    const orders = await Order.findAll();
+    return res.json(orders);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+});
+// .post(async (req, res) => {
+//   try {
+//     const order = await Order.create(req.body);
+//     return res.json(order);
+//   } catch (error) {
+//     return res.sendStatus(500);
+//   }
+// });
 
-  router.post(async (req, res) => {
-    try {
-      const { name, phone, email, ...serviceData } = req.body;
-      
-      const order = await Order.create({
-        name,
-        phone,
-        email
-      });
-      
-      const service = await Service.create({...serviceData, order_id: order.id});
-      return res.json(order);
-    } catch (error) {
-      console.error('Error creating order:', error);
-      return res.sendStatus(500);
-    }
-  });
+router.post('/', async (req, res) => {
+  try {
+    const { name, phone, email, ...serviceData } = req.body;
+
+    const order = await Order.create({
+      name,
+      phone,
+      email,
+    });
+
+    const service = await Service.create({
+      ...serviceData,
+      order_id: order.id,
+    });
+    return res.status(200).json({order, service});
+  } catch (error) {
+    console.error('Error creating order:', error);
+    return res.sendStatus(500);
+  }
+});
 
 router
   .route('/:id')
