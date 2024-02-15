@@ -60,7 +60,7 @@ export default function ContactsPage(): JSX.Element {
               Реквизиты:
             </Typography>
             <Typography variant="body1">
-              ООО "СИМПРОВ И ПАРТНЕРЫ" <br />
+              ООО "АЛИ и ИБР" <br />
               ОГРН: 1117746159002 <br />
               ИНН: 7733760573 <br />
               КПП: 773301001

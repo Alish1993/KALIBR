@@ -87,30 +87,33 @@ export default function Footer(): JSX.Element {
       <div style={styleContainer}>
         <div style={styleDiv}>
           <h3 style={styleH3}>О компании:</h3>
-          <p style={styleP}>text</p>
+          <p style={styleP}>
+            KALIBR - ваш надежный партнер в грузоперевозках. Мы обеспечиваем эффективные и надежные
+            транспортные решения для вашего бизнеса, гарантируя безопасную доставку ваших грузов
+            вовремя.
+          </p>
         </div>
 
         <div style={styleDiv}>
           <h3 style={styleH3}>Контакты:</h3>
           <p style={styleP}>
-            Акции Карта сайта Политика конфиденциальности КОНТАКТЫ +7 (495) 762-53-93
-            info@pereezd-ideal.ru г. Москва, ул. Золоторожский вал 11, стр. 21
+            КОНТАКТЫ +7 (495) 762-53-93
+            <br />
+            info@pereezd-ideal.ru <br />
+            г. Москва, ул. Золоторожский вал 11, стр. 21
           </p>
         </div>
         <div style={styleDiv}>
           <h3 style={styleH3}>Наши соцсети:</h3>
           <div style={{ padding: '50px', display: 'flex', flexDirection: 'row' }}>
-            <a style={{ marginRight: '30px'}}>
-              <img style={styleImg} src="/icon/free-icon-instagram-739244.png" alt="Instagram" />
-            </a>
             <a style={{ marginRight: '30px' }}>
               <img style={styleImg} src="/icon/free-icon-whatsapp-1384023.png" alt="WhatsApp" />
             </a>
             <a style={{ marginRight: '30px' }}>
-              <img style={styleImg} src="/icon/free-icon-youtube-1077046.png" alt="WhatsApp" />
+              <img style={styleImg} src="/icon/free-icon-youtube-1077046.png" alt="youtube" />
             </a>
             <a style={{ marginRight: '30px' }}>
-              <img style={styleImg} src="/icon/free-icon-vk-1236871.png" alt="WhatsApp" />
+              <img style={styleImg} src="/icon/free-icon-vk-1236871.png" alt="vk" />
             </a>
             <a>
               <img style={styleImg} src="/icon/free-icon-telegram-2111812.png" alt="Telegram" />

@@ -46,7 +46,12 @@ const rows2 = [
   createData('Стрейч-пленка', '450 мм./200 м.', '1', '1500 ₽'),
   createData('Скотч', '50 мм./65 м.', '1', '200 ₽'),
 ];
-
+const rows3 = [
+  createData('Газель стандартная 1,5 тонны, 8 - 12 м³', '600 ₽', '4 + 1', '3000 ₽'),
+  createData('Газель удлинённая 2,5 тонны, 16 - 18 м³', '700 ₽', '5 + 1', '4200 ₽'),
+  createData('ЗИЛ Бычок меб. фургон 3 тонны, 20 - 24 м³', '750 ₽', '5 + 1', '4500 ₽'),
+  createData('Мерседес меб. фургон 5 тонн, 26 - 32 м³', '950 ₽', '6 + 1', '6650 ₽'),
+];
 export default function PriceAllPage(): JSX.Element {
   return (
     <div>
@@ -63,7 +68,7 @@ export default function PriceAllPage(): JSX.Element {
           после предоставления полной информации о заказе. Обращайтесь по контактным телефонам +7
           (963) 967-35-34, +7 (977) 326-09-90 , закажите обратный звонок или оставьте заявку и
           получите подробную консультацию!
-        </Typography>
+          </Typography>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -87,6 +92,7 @@ export default function PriceAllPage(): JSX.Element {
           </TableBody>
         </Table>
       </TableContainer>
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700, marginTop: '100px' }} aria-label="customized table">
           <TableHead>
@@ -94,6 +100,31 @@ export default function PriceAllPage(): JSX.Element {
               <StyledTableCell>Виды материалов</StyledTableCell>
               <StyledTableCell align="right">Размер, мм, м.</StyledTableCell>
               <StyledTableCell align="right">Количество, шт, рул.</StyledTableCell>
+              <StyledTableCell align="right">Стоимость, руб.</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows2.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.price}</StyledTableCell>
+                <StyledTableCell align="right">{row.time}</StyledTableCell>
+                <StyledTableCell align="right">{row.bid}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 , marginTop: '100px'}} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Виды автотранспорта, грузоподъемность, м³</StyledTableCell>
+              <StyledTableCell align="right">Стоимость 1 часа работы, руб.</StyledTableCell>
+              <StyledTableCell align="right">Минимальное время работы, ч.</StyledTableCell>
               <StyledTableCell align="right">Стоимость, руб.</StyledTableCell>
             </TableRow>
           </TableHead>
