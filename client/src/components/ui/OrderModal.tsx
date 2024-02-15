@@ -10,7 +10,7 @@ export default function OrderModal(): JSX.Element {
   const dispatch = useAppDispatch();
   const modalUser = useAppSelector((state) => state.modals.toggleOrderModal);
   const serviceData =  useAppSelector((state) => state.loaderPackAuto.services)   //объект с данными с калькулятора из слайса
-  console.log(serviceData, "данные с калькулятора из слайса")
+  // console.log(serviceData, "данные с калькулятора из слайса")
   const [formData, setFormData] = useState<OrderFormType>({
     name: '',
     phone: '',

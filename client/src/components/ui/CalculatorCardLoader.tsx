@@ -13,15 +13,6 @@ export default function CalculatorCardLoader(): JSX.Element {
 
   const [isLoaderSelected, setIsLoaderSelected] = React.useState(false); // анимация грузчика
 
-  // анимация грузчика при выборе их количества
-   // рабочая версия!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAmountLoader(event.target.value as string);
-  //   setIsLoaderSelected(true);
-  //   setTimeout(() => setIsLoaderSelected(false), 300);
-  // };
-  // рабочая версия!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
   const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     const amountValue = event.target.value;
     setAmountLoader(amountValue); // или setAmountLoader(amountValue.toString());
@@ -32,14 +23,30 @@ export default function CalculatorCardLoader(): JSX.Element {
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
- 
 
-  // const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTimeloader(event.target.value as string);
-  //   dispatch(formServiceObject(parseInt(timeLoader)));
-  //   setIsLoaderSelected(true);
-  //   setTimeout(() => setIsLoaderSelected(false), 300);
-  // };
+//   const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   const amountValue = event.target.value;
+//   setAmountLoader(amountValue);
+
+//   // Устанавливаем значение времени работы равным 4, если выбран 1 грузчик
+//   if (parseInt(amountValue) === 1) {
+//     setTimeloader('4');
+//     const formData: CalculatorTypeNoId = {
+//       amountLoader: parseInt(amountValue),
+//       workTime: 4, // Установка значения времени работы в 4 часа
+//     };
+//     dispatch(formServiceObject(formData));
+//   } else {
+//     setTimeloader(''); // Сбрасываем значение времени работы, если выбрано больше 1 грузчика
+//     const formData: CalculatorTypeNoId = {
+//       amountLoader: parseInt(amountValue),
+//     };
+//     dispatch(formServiceObject(formData));
+//   }
+
+//   setIsLoaderSelected(true);
+//   setTimeout(() => setIsLoaderSelected(false), 300);
+// };
 
   const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     const timeValue = event.target.value;
@@ -51,15 +58,6 @@ export default function CalculatorCardLoader(): JSX.Element {
     setIsLoaderSelected(true);
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
-
-  // запасной вариант для отправки в стор
-  // React.useEffect(() => {
-  //   const formData: CalculatorTypeNoId = {
-  //     amountLoader: parseInt(amountLoader),
-  //     workTime: parseInt(timeLoader),
-  //   };
-  //   dispatch(formServiceObject(formData));
-  // }, [amountLoader, timeLoader]); // зависимости: amountLoader и timeLoader
 
   return (
     <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>

@@ -26,17 +26,6 @@ export default function CalculatorCardAuto(): JSX.Element {
   const [path, setPath] = React.useState(''); // инпут для выбора расстояния
   const [isMachineSelected, setIsMachineSelected] = React.useState(false); // анимация машины
 
-  // const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const amountValue = event.target.value;
-  //   setAmountLoader(amountValue); // или setAmountLoader(amountValue.toString());
-  //   const formData: CalculatorTypeNoId = {
-  //     amountLoader: parseInt(amountValue),
-  //   } as CalculatorTypeNoId;
-  //   dispatch(formServiceObject(formData));
-  //   setIsLoaderSelected(true);
-  //   setTimeout(() => setIsLoaderSelected(false), 300);
-  // };
-
   // для анимации при выборе количества машин
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const amountMachineValue = event.target.value;
@@ -148,9 +137,9 @@ export default function CalculatorCardAuto(): JSX.Element {
                   <MenuItem value="">
                     <em>Выбрать</em>
                   </MenuItem>
-                  <MenuItem value={10}>Газель1</MenuItem>
-                  <MenuItem value={20}>Газель2</MenuItem>
-                  <MenuItem value={30}>Газель3</MenuItem>
+                  <MenuItem value={5000}>Газель 3 метра</MenuItem>
+                  <MenuItem value={6000}>Газель 4 метра</MenuItem>
+                  <MenuItem value={7000}>Газель 5 метров</MenuItem>
                 </Select>
                 <FormHelperText>Выбрать машину</FormHelperText>
               </FormControl>
@@ -210,21 +199,3 @@ export default function CalculatorCardAuto(): JSX.Element {
     </Card>
   );
 }
-
-// {
-//   /* <Box mt={5} display="flex" flexDirection="column" justifyContent="center">
-//             <Box display="flex" flexDirection="row" justifyContent="center">
-//               <Button sx={{ margin: 1 }} variant="contained" onClick={() => dispatch(increment())}>
-//                 +
-//               </Button>
-
-//               <Button sx={{ margin: 1 }} variant="contained" onClick={() => dispatch(decrement())}>
-//                 -
-//               </Button>
-
-//             </Box>
-//             <Box mt={3} display="flex" flexDirection="row" justifyContent="center">
-//               <Typography variant="h4">{counterValue}</Typography>
-//             </Box>
-//           </Box> */
-// }
