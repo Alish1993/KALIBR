@@ -1,12 +1,7 @@
 import React from 'react';
 import Dialog from '@mui/material/Dialog';
-import {
-  Box,
-  Button,
-  DialogActions,
-  DialogContent,
-  Grid,
-  TextField} from '@mui/material';
+import { Box, Button, DialogActions, DialogContent, Grid, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setSignInModalVisibility } from '../../redux/slices/modals/modalsSlice';
 import { signInThunk } from '../../redux/slices/auth/authThunks';
@@ -19,7 +14,7 @@ export default function SignInModal(): JSX.Element {
   const handleClose = (): void => {
     dispatch(setSignInModalVisibility(false));
   };
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // return (
   //   <Card sx={{
@@ -35,11 +30,20 @@ export default function SignInModal(): JSX.Element {
   //           {group.name} {/* Выравнивание названия по центру */}
   //         </Typography>
 
-
   const submitHandler: React.ChangeEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget));
-    void dispatch(signInThunk(formData as UserSignInType));
+    dispatch(signInThunk(formData as UserSignInType))
+      .unwrap()
+      .then((res) => {
+        if (res.user.isAdmin === true) {
+          return navigate('/admin');
+        }
+        if (res.user.isAdmin === false) {
+          return navigate('/manager');
+        }
+      })
+      .catch((error) => console.log(error));
     dispatch(setSignInModalVisibility(false));
   };
 
