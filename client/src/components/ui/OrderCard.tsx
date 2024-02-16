@@ -59,7 +59,7 @@ export default function OrderCard({ order }: OrderCardProperties): JSX.Element {
             </Typography>
             <Typography variant="body1" color="textSecondary">
               {order?.Services?.at(0)?.path
-                ? `расстояние от МКАД ${order?.Services?.at(0)?.path}`
+                ? `расстояние от МКАД, км ${order?.Services?.at(0)?.path}`
                 : null}
             </Typography>
             <Typography variant="body1" color="textSecondary">
