@@ -5,7 +5,6 @@ import {
   Button,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Grid,
   TextField} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -20,6 +19,22 @@ export default function SignInModal(): JSX.Element {
   const handleClose = (): void => {
     dispatch(setSignInModalVisibility(false));
   };
+  // const navigate = useNavigate();
+
+  // return (
+  //   <Card sx={{
+  //     maxWidth: 400,
+  //     m: 2,
+  //     boxShadow: 3,
+  //     borderRadius: '10px',
+  //     border: '2px solid #5d001e', // Цветная рамка
+  //     backgroundColor: '#ffffff', // Белый фон карточки
+  //   }}>
+  //     <CardActionArea onClick={() => navigate(`/groups/${group.id}`)}>
+  //     <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', mb: 0, mt: 1 }}>
+  //           {group.name} {/* Выравнивание названия по центру */}
+  //         </Typography>
+
 
   const submitHandler: React.ChangeEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -35,7 +50,6 @@ export default function SignInModal(): JSX.Element {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Sign In</DialogTitle>
       <DialogContent>
         <Box
           py={5}
@@ -66,13 +80,13 @@ export default function SignInModal(): JSX.Element {
           </Grid>
 
           <Button variant="contained" color="primary" type="submit" style={{ marginTop: '10px' }}>
-            Sign In
+            Войти
           </Button>
         </Box>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} autoFocus>
-          Close
+          Закрыть
         </Button>
       </DialogActions>
     </Dialog>
