@@ -86,7 +86,7 @@ router
     try {
       const { id } = req.params;
       await Order.update(req.body, { where: { id } });
-      const order = Order.findByPk(id);
+      const order = await Order.findByPk(id);
       return res.json(order);
     } catch (error) {
       console.error(error);
