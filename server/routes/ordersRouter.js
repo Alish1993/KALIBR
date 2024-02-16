@@ -3,10 +3,10 @@ const TelegramBot = require('node-telegram-bot-api');
 const { Order } = require('../db/models');
 const { Service } = require('../db/models');
 
-// const token = '6762356713:AAHwlJ-PAfwNHustJOIokMKBsmwoH6HHJSY';
+const token = '6762356713:AAHwlJ-PAfwNHustJOIokMKBsmwoH6HHJSY';
 
-// const chatId1 = 5547151389;
-// const bot = new TelegramBot(token, { polling: true });
+const chatId1 = 5547151389;
+const bot = new TelegramBot(token, { polling: true });
 const now = new Date();
 console.log(now.getFullYear(), now.getMonth(), now.getDate());
 function sendAdminMessage(message) {
