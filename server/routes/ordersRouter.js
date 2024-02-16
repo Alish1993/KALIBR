@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const { Order } = require('../db/models');
+const { Service } = require('../db/models');
 
 const token = '6762356713:AAHwlJ-PAfwNHustJOIokMKBsmwoH6HHJSY';
 
@@ -15,28 +16,60 @@ function sendAdminMessage(message) {
 
 const router = Router();
 
-router
-  .route('/')
-  .get(async (req, res) => {
-    try {
-      const orders = await Order.findAll();
-      return res.json(orders);
-    } catch (error) {
-      return res.sendStatus(500);
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      const { name, email, phone } = req.body;
-      const order = await Order.create({ name, email, phone });
+router.route('/').get(async (req, res) => {
+  try {
+    const orders = await Order.findAll();
+    return res.json(orders);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+});
+// пост для заполнения БД данными из калькулятора и модального окна
+router.post('/', async (req, res) => {
+  try {
+    const { name, phone, email, ...serviceData } = req.body;
 
-      const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
-      sendAdminMessage(message);
-      res.status(201).json(order);
-    } catch (error) {
-      return res.sendStatus(500);
-    }
-  });
+    const order = await Order.create({
+      name,
+      phone,
+      email,
+    });
+
+    const service = await Service.create({
+      ...serviceData,
+      order_id: order.id,
+    });
+
+    const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
+    sendAdminMessage(message);
+    return res.status(200).json({ order, service });
+  } catch (error) {
+    console.error('Error creating order:', error);
+    return res.sendStatus(500);
+  }
+});
+// router
+//   .route('/')
+//   .get(async (req, res) => {
+//     try {
+//       const orders = await Order.findAll();
+//       return res.json(orders);
+//     } catch (error) {
+//       return res.sendStatus(500);
+//     }
+//   })
+//   .post(async (req, res) => {
+//     try {
+//       const { name, email, phone } = req.body;
+//       const order = await Order.create({ name, email, phone });
+
+//       const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
+//       sendAdminMessage(message);
+//       res.status(201).json(order);
+//     } catch (error) {
+//       return res.sendStatus(500);
+//     }
+//   });
 
 router
   .route('/:id')

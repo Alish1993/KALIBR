@@ -9,6 +9,8 @@ import type { OrderFormType } from '../../types/orderType';
 export default function OrderModal(): JSX.Element {
   const dispatch = useAppDispatch();
   const modalUser = useAppSelector((state) => state.modals.toggleOrderModal);
+  const serviceData = useAppSelector((state) => state.loaderPackAuto.services); // объект с данными с калькулятора из слайса
+  // console.log(serviceData, "данные с калькулятора из слайса")
   const [formData, setFormData] = useState<OrderFormType>({
     name: '',
     phone: '',
@@ -29,15 +31,21 @@ export default function OrderModal(): JSX.Element {
     }));
   };
 
+  //! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! этот код нужно исправить
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.email) {
       setError('Заполните все поля');
       return;
     }
-
+    // объединение данных из модального окна и данных из калькулятора для отправки на сервер
+    const dataToSend = { ...formData, ...serviceData };
+    void dispatch(addOrderThunk(dataToSend));
+    dispatch(setToggleOrderModal(false));
+    // для всплытия предупреждения об уже оставленной заявке
     try {
-      await dispatch(addOrderThunk(formData));
+      await dispatch(addOrderThunk(formData)); 
       setSuccessMessage('Спасибо! Мы скоро с Вами свяжемся!');
       setTimeout(() => {
         handleClose();
