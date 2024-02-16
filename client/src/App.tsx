@@ -19,7 +19,8 @@ import PriceaaAllPage from './components/pages/PriceaaAllPage';
 import ServicePage from './components/pages/ServicePage';
 import CreateUserModal from './components/ui/CreateUserModal';
 import AdminPage from './components/pages/AdminPage';
-
+import PrivateRouter from './components/hocs/PrivateRouter';
+import EditOrderModal from './components/ui/EditOrderModal';
 
 const lightTheme = createTheme({
   palette: {
@@ -50,7 +51,7 @@ export default function App(): JSX.Element {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Loader isLoading={user.status === 'pending'}>
-        <>
+        <><EditOrderModal />
           <CreateUserModal />
           <AvatarModal />
           <SignInModal />
@@ -64,10 +65,24 @@ export default function App(): JSX.Element {
                 <Route index element={<MainPage />} />
                 <Route path="/calculatorPage" element={<CalculatorPage />} />
                 <Route path="/contactPage" element={<ContactPage />} />
-                <Route path="/manager" element={<ManagerPage />} />
+                <Route
+                  path="/manager"
+                  element={
+                    <PrivateRouter isAllowed={user.status === 'logged'}>
+                      <ManagerPage />
+                    </PrivateRouter>
+                  }
+                />
                 <Route path="/priceAllPage" element={<PriceaaAllPage />} />
                 <Route path="/service" element={<ServicePage />} />
-                <Route path="/admin" element={<AdminPage />} />
+                <Route
+                  path="/admin"
+                  element={
+                    <PrivateRouter isAllowed={user.status === 'logged' && user.isAdmin === true}>
+                      <AdminPage />
+                    </PrivateRouter>
+                  }
+                />
               </Route>
             </Routes>
           </Router>

@@ -1,9 +1,11 @@
 import { IconButton, ListItem, ListItemText, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import type { OrderType } from '../../types/orderType';
 import { useAppDispatch } from '../../redux/hooks';
 import { deleteOrderThunk } from '../../redux/slices/orders/ordersThunks';
+import { setCurrentOrder } from '../../redux/slices/orders/ordersSlice';
 
 type OrderCardProperties = {
   order: OrderType;
@@ -88,6 +90,15 @@ export default function OrderCard({ order }: OrderCardProperties): JSX.Element {
           </>
         }
       />
+      <IconButton
+        edge="end"
+        aria-label="delete"
+        onClick={() => {
+          dispatch(setCurrentOrder(order));
+        }}
+      >
+        <EditIcon />
+      </IconButton>
       <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
         <DeleteIcon />
       </IconButton>

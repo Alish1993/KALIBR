@@ -44,7 +44,7 @@ export default function AvatarModal(): JSX.Element {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Change avatar</DialogTitle>
+      <DialogTitle id="alert-dialog-title">Изменить фото</DialogTitle>
       <DialogContent>
         <Box
           py={5}
@@ -65,16 +65,13 @@ export default function AvatarModal(): JSX.Element {
           />
 
           <Button variant="contained" color="primary" type="submit" style={{ marginTop: '10px' }}>
-            Send
+            Изменить
           </Button>
-          <Typography variant="caption" color="textSecondary" style={{ marginTop: '10px' }}>
-            * Only .jpg, .png files are supported
-          </Typography>
         </Box>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} autoFocus>
-          Close
+          закрыть
         </Button>
       </DialogActions>
     </Dialog>
