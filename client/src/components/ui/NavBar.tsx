@@ -29,11 +29,11 @@ export default function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const links = [
-    { to: '/', name: 'Main' },
-    { to: '/calculatorPage', name: 'Calculator' },
-    { to: '/contactPage', name: 'Contact' },
-    { to: '/service', name: 'Services' },
-    { to: '/priceAllPage', name: 'PraceAll' },
+    { to: '/', name: 'Главная' },
+    { to: '/contactPage', name: 'Контакты' },
+    { to: '/service', name: 'Услуги' },
+    { to: '/priceAllPage', name: 'Цены' },
+    { to: '/calculatorPage', name: 'Калькулятор' },
   ];
 
   const toggleDarkMode = () => {
@@ -79,7 +79,8 @@ export default function Navbar(): JSX.Element {
                   component="div"
                   sx={{
                     ...typographyStyle,
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    color: isDarkMode ? 'white' : 'black',
+                    fontWeight: 'bold', // добавляем жирный шрифт для ссылки "Admin"
                   }}
                 >
                   Admin

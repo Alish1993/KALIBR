@@ -1,6 +1,18 @@
 const { Router } = require('express');
+const TelegramBot = require('node-telegram-bot-api');
 const { Order } = require('../db/models');
 const { Service } = require('../db/models');
+
+const token = '6762356713:AAHwlJ-PAfwNHustJOIokMKBsmwoH6HHJSY';
+
+const chatId1 = 5547151389;
+const bot = new TelegramBot(token, { polling: true });
+const now = new Date();
+console.log(now.getFullYear(), now.getMonth(), now.getDate());
+function sendAdminMessage(message) {
+  bot.sendMessage(chatId1, message);
+  console.log(message);
+}
 
 const router = Router();
 
@@ -12,15 +24,7 @@ router.route('/').get(async (req, res) => {
     return res.sendStatus(500);
   }
 });
-// .post(async (req, res) => {
-//   try {
-//     const order = await Order.create(req.body);
-//     return res.json(order);
-//   } catch (error) {
-//     return res.sendStatus(500);
-//   }
-// });
-
+// пост для заполнения БД данными из калькулятора и модального окна
 router.post('/', async (req, res) => {
   try {
     const { name, phone, email, ...serviceData } = req.body;
@@ -35,12 +39,37 @@ router.post('/', async (req, res) => {
       ...serviceData,
       order_id: order.id,
     });
-    return res.status(200).json({order, service});
+
+    const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
+    sendAdminMessage(message);
+    return res.status(200).json({ order, service });
   } catch (error) {
     console.error('Error creating order:', error);
     return res.sendStatus(500);
   }
 });
+// router
+//   .route('/')
+//   .get(async (req, res) => {
+//     try {
+//       const orders = await Order.findAll();
+//       return res.json(orders);
+//     } catch (error) {
+//       return res.sendStatus(500);
+//     }
+//   })
+//   .post(async (req, res) => {
+//     try {
+//       const { name, email, phone } = req.body;
+//       const order = await Order.create({ name, email, phone });
+
+//       const message = `Новый заказ:${order.id} ${now} \nИмя  ${name},\nEmail   ${email},\nТелефон  ${phone}`;
+//       sendAdminMessage(message);
+//       res.status(201).json(order);
+//     } catch (error) {
+//       return res.sendStatus(500);
+//     }
+//   });
 
 router
   .route('/:id')

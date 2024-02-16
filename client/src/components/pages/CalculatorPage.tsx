@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography, TextField, Button, Box } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import CalculatorCardAuto from '../ui/CalculatorCardAuto';
 import CalculatorCardLoader from '../ui/CalculatorCardLoader';
 import CalculatorCardPackage from '../ui/CalculatorCardPackage';
@@ -78,14 +77,20 @@ const totalCost = calculateTotalCost(serviceData);
         </Box>
         <OrderModal />
         <Button
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={() => {
-            void dispatch(setToggleOrderModal(true));
-          }}
-        >
-          Отправить заявку
-        </Button>
+                    variant="contained"
+                    color="primary"
+                    style={{
+                      width: '20%',
+                      height: '100%',
+                      borderRadius: '30px',
+                      marginLeft: '30px',
+                    }}
+                    onClick={() => {
+                      dispatch(setToggleOrderModal(true));
+                    }}
+                  >
+                   Отправить заявку
+                  </Button>
       </Box>
     </Box>
   );
