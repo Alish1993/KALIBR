@@ -45,7 +45,7 @@ export default function OrderModal(): JSX.Element {
     dispatch(setToggleOrderModal(false));
     // для всплытия предупреждения об уже оставленной заявке
     try {
-      await dispatch(addOrderThunk(formData)); 
+      // await dispatch(addOrderThunk(formData)); // дублирующий код
       setSuccessMessage('Спасибо! Мы скоро с Вами свяжемся!');
       setTimeout(() => {
         handleClose();
