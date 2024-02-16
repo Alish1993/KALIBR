@@ -35,10 +35,55 @@ export default function OrderCard({ order }: OrderCardProperties): JSX.Element {
         secondary={
           <>
             <Typography variant="body1" color="textSecondary" gutterBottom>
-              {order.email}
+              почта {order.email}
             </Typography>
             <Typography variant="body1" color="textSecondary">
-              {order.phone}
+              телефон {order.phone}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.amountMachine
+                ? `количество машин ${order?.Services?.at(0)?.amountMachine}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.machine
+                ? `тип машины ${order?.Services?.at(0)?.machine}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.time
+                ? `время работы машины ${order?.Services?.at(0)?.time}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.path
+                ? `расстояние от МКАД ${order?.Services?.at(0)?.path}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.workTime
+                ? `время работы грузчиков ${order?.Services?.at(0)?.workTime}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.box
+                ? `количество коробки ${order?.Services?.at(0)?.box}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.roll
+                ? `количество рулонов оберточной пленки ${order?.Services?.at(0)?.roll}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.scotch
+                ? `количество скотча ${order?.Services?.at(0)?.scotch}`
+                : null}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {order?.Services?.at(0)?.stretchRoll
+                ? `количество рулонов стрйч-пленки ${order?.Services?.at(0)?.stretchRoll}`
+                : null}
             </Typography>
           </>
         }
