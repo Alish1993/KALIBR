@@ -51,7 +51,8 @@ export default function App(): JSX.Element {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Loader isLoading={user.status === 'pending'}>
-        <><EditOrderModal />
+        <Router>
+          <EditOrderModal />
           <CreateUserModal />
           <AvatarModal />
           <SignInModal />
@@ -59,34 +60,32 @@ export default function App(): JSX.Element {
           <Button onClick={toggleDarkMode}>
             {isDarkMode ? <DarkModeIcon /> : <Brightness7Icon />}
           </Button>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Root />}>
-                <Route index element={<MainPage />} />
-                <Route path="/calculatorPage" element={<CalculatorPage />} />
-                <Route path="/contactPage" element={<ContactPage />} />
-                <Route
-                  path="/manager"
-                  element={
-                    <PrivateRouter isAllowed={user.status === 'logged'}>
-                      <ManagerPage />
-                    </PrivateRouter>
-                  }
-                />
-                <Route path="/priceAllPage" element={<PriceaaAllPage />} />
-                <Route path="/service" element={<ServicePage />} />
-                <Route
-                  path="/admin"
-                  element={
-                    <PrivateRouter isAllowed={user.status === 'logged' && user.isAdmin === true}>
-                      <AdminPage />
-                    </PrivateRouter>
-                  }
-                />
-              </Route>
-            </Routes>
-          </Router>
-        </>
+          <Routes>
+            <Route path="/" element={<Root />}>
+              <Route index element={<MainPage />} />
+              <Route path="/calculatorPage" element={<CalculatorPage />} />
+              <Route path="/contactPage" element={<ContactPage />} />
+              <Route
+                path="/manager"
+                element={
+                  <PrivateRouter isAllowed={user.status === 'logged'}>
+                    <ManagerPage />
+                  </PrivateRouter>
+                }
+              />
+              <Route path="/priceAllPage" element={<PriceaaAllPage />} />
+              <Route path="/service" element={<ServicePage />} />
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRouter isAllowed={user.status === 'logged' && user.isAdmin === true}>
+                    <AdminPage />
+                  </PrivateRouter>
+                }
+              />
+            </Route>
+          </Routes>
+        </Router>
       </Loader>
     </ThemeProvider>
   );
