@@ -18,7 +18,9 @@ const router = Router();
 
 router.route('/').get(async (req, res) => {
   try {
-    const orders = await Order.findAll();
+    const orders = await Order.findAll(
+      { include: Service }
+    );
     return res.json(orders);
   } catch (error) {
     return res.sendStatus(500);
