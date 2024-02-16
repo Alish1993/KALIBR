@@ -12,10 +12,10 @@ export const getOrdersThunk = createAsyncThunk<OrderType[]>('orders/getOrders', 
 //   'orders/addOrder',
 //   async (formData) => {
 //     console.log(formData);
-    
+
 //     const data = await OrderService.createOrder(formData);
 //     console.log(data);
-    
+
 //     return data;
 //   },
 // );
@@ -27,7 +27,7 @@ export const addOrderThunk = createAsyncThunk<OrderType, OrderFormType>(
       return data;
     } catch (error) {
       console.error('Ошибка отправки данных заказа:', error);
-      throw error; 
+      throw error;
     }
   },
 );
@@ -39,3 +39,11 @@ export const deleteOrderThunk = createAsyncThunk<OrderType['id'], OrderType['id'
     return id;
   },
 );
+
+export const editOrderThunk = createAsyncThunk<
+  OrderType,
+  { id: OrderType['id']; formData: OrderFormType }
+>('orders/editOrder', async ({ id, formData }) => {
+  const data = await OrderService.editOrder(id, formData);
+  return data;
+});

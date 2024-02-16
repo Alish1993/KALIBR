@@ -42,7 +42,10 @@ export default function Navbar(): JSX.Element {
 
   return (
     <Box sx={{ flexGrow: 1, top: 0, zIndex: 1000 }}>
-      <AppBar position="static" sx={{ borderRadius: '20px', backgroundColor: isDarkMode ? 'black' : 'white' }}>
+      <AppBar
+        position="static"
+        sx={{ borderRadius: '20px', backgroundColor: isDarkMode ? 'black' : 'white' }}
+      >
         <Toolbar>
           {user.status === 'guest' &&
             links.map((link) => (
@@ -70,22 +73,24 @@ export default function Navbar(): JSX.Element {
                     color: isDarkMode ? 'white' : 'black',
                   }}
                 >
-                  Orders
+                  Заказы
                 </Typography>
               </Link>
-              <Link component={NavLink} to="/admin" sx={linkStyle}>
-                <Typography
-                  variant="h1"
-                  component="div"
-                  sx={{
-                    ...typographyStyle,
-                    color: isDarkMode ? 'white' : 'black',
-                    fontWeight: 'bold', // добавляем жирный шрифт для ссылки "Admin"
-                  }}
-                >
-                  Admin
-                </Typography>
-              </Link>
+              {user.isAdmin === true && (
+                <Link component={NavLink} to="/admin" sx={linkStyle}>
+                  <Typography
+                    variant="h1"
+                    component="div"
+                    sx={{
+                      ...typographyStyle,
+                      color: isDarkMode ? 'white' : 'black',
+                      fontWeight: 'bold', // добавляем жирный шрифт для ссылки "Admin"
+                    }}
+                  >
+                    Сотрудники
+                  </Typography>
+                </Link>
+              )}
               <Button onClick={() => void dispatch(signOutThunk())} sx={linkStyle}>
                 {' '}
                 <Typography
@@ -96,7 +101,7 @@ export default function Navbar(): JSX.Element {
                     color: isDarkMode ? 'white' : 'black',
                   }}
                 >
-                  SignOut
+                  Выход
                 </Typography>
               </Button>
             </>
@@ -122,7 +127,10 @@ export default function Navbar(): JSX.Element {
             />
           )}
 
-          <Button onClick={toggleDarkMode} sx={{ color: isDarkMode ? 'white' : 'black' , borderRadius: '20px' }}>
+          <Button
+            onClick={toggleDarkMode}
+            sx={{ color: isDarkMode ? 'white' : 'black', borderRadius: '20px' }}
+          >
             {isDarkMode ? 'Light' : 'Dark'}
           </Button>
         </Toolbar>
