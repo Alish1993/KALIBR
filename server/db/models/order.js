@@ -2,19 +2,8 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ Service, OrderedService }) {
-      this.belongsToMany(Service, {
-        through: OrderedService,
-        foreignKey: 'orderId',
-      });
-      // this.hasMany(OrderedService, {
-      //   foreignKey: 'orderId',
-      // });
+    static associate({ Service }) {
+      this.hasMany(Service, { foreignKey: 'order_id',});
     }
   }
   Order.init(

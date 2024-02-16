@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setAvatarModalVisibility } from '../../redux/slices/modals/modalsSlice';
 import { setAvatarThunk } from '../../redux/slices/auth/authThunks';
 
-export default function EditDialog(): JSX.Element {
+export default function AvatarModal(): JSX.Element {
   const user = useAppSelector((store) => store.auth.user);
   const dispatch = useAppDispatch();
   const toggleAvatarModal = useAppSelector((store) => store.modals.toggleAvatarModal);

@@ -15,7 +15,7 @@ export const signInThunk = createAsyncThunk<AuthStateType, UserSignInType>(
   },
 );
 
-export const signOutThunk = createAsyncThunk('auth/signout', async () => {
+export const signOutThunk = createAsyncThunk('auth/signOut', async () => {
   await AuthService.signOut();
   return undefined;
 });
@@ -27,7 +27,28 @@ export const refreshTokenThunk = createAsyncThunk<AuthStateType>('auth/refreshTo
 
 // multer
 
-export const setAvatarThunk = createAsyncThunk<UserType>('auth/avatar', async (formData) => {
+export const setAvatarThunk = createAsyncThunk<UserType>('auth/setAvatar', async (formData) => {
   const data = await AuthService.setAvatar(formData);
   return data;
 });
+
+export const getUsersThunk = createAsyncThunk<UserType[]>('auth/getUsers', async () => {
+  const data = await AuthService.getUsers();
+  return data;
+});
+
+export const deleteUserThunk = createAsyncThunk<UserType['id'], UserType['id']>(
+  'auth/deleteUser',
+  async (id) => {
+    await AuthService.deleteUser(id);
+    return id;
+  },
+);
+
+export const createUserThunk = createAsyncThunk<UserType, UserSignInType>(
+  'auth/createUser',
+  async (formData) => {    
+    const data = await AuthService.createUser(formData);
+    return data;
+  },
+);

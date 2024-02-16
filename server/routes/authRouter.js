@@ -10,6 +10,58 @@ const upload = require('../middlewares/multer');
 
 const router = Router();
 
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll({ where: { isAdmin: false } });
+    const plainUsers = users.map((user) => {
+      const plainUser = user.get();
+      delete plainUser.password;
+      return plainUser;
+    });
+    return res.json(plainUsers);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.destroy({ where: { id } });
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
+router.post('/', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (username && email && password) {
+    try {
+      const [user, created] = await User.findOrCreate({
+        where: { email },
+        defaults: {
+          username,
+          password: await bcrypt.hash(password, 10),
+          isAdmin: false,
+        },
+      });
+      if (!created) {
+        return res.status(403).json({ message: 'User already exists' });
+      }
+      const plainUser = user.get();
+      delete plainUser.password;
+      return res.status(200).json(plainUser);
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(500);
+    }
+  }
+  return res.sendStatus(500);
+});
+
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 

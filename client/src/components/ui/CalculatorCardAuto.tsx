@@ -1,30 +1,80 @@
 import * as React from 'react';
-import { Box, Card, Typography, TextField, Divider, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@mui/material';
+import type { SelectChangeEvent } from '@mui/material';
+import {
+  Box,
+  Card,
+  Typography,
+  TextField,
+  Divider,
+  InputLabel,
+  MenuItem,
+  FormHelperText,
+  FormControl,
+  Select,
+} from '@mui/material';
 import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
+import type { CalculatorTypeNoId } from '../../types/calculatorType';
+import { formServiceObject } from '../../redux/slices/calculator/calcSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 export default function CalculatorCardAuto(): JSX.Element {
-  const [machine, setMachine] = React.useState(''); // селект для выбора машины
+  const dispatch = useAppDispatch();
+
   const [amount, setAmount] = React.useState(''); // инпут для кол-ва машин
+  const [machine, setMachine] = React.useState(''); // селект для выбора машины
   const [time, setTime] = React.useState(''); // инпут для времени работы
   const [path, setPath] = React.useState(''); // инпут для выбора расстояния
   const [isMachineSelected, setIsMachineSelected] = React.useState(false); // анимация машины
 
+  // для анимации при выборе количества машин
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const amountMachineValue = event.target.value;
+    setAmount(amountMachineValue);
+    const formData: CalculatorTypeNoId = {
+      amountMachine: parseInt(amountMachineValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
+    setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
+    setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
+  };
+
   // для анимации при выборе машины
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setMachine(event.target.value as string);
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const typeMachineValue = event.target.value;
+    setMachine(typeMachineValue);
+    const formData: CalculatorTypeNoId = {
+      machine: typeMachineValue,
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
     setIsMachineSelected(true);
     setTimeout(() => setIsMachineSelected(false), 500);
   };
-  // для анимации при выборе количества машин
-  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(event.target.value);
+
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const timeMachineValue = event.target.value;
+    setTime(timeMachineValue);
+    const formData: CalculatorTypeNoId = {
+      time: parseInt(timeMachineValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
+    setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
+    setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
+  };
+
+  const handlePathChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const pathMachineValue = event.target.value;
+    setPath(pathMachineValue);
+    const formData: CalculatorTypeNoId = {
+      path: parseInt(pathMachineValue),
+    } as CalculatorTypeNoId;
+    dispatch(formServiceObject(formData));
     setIsMachineSelected(true); // Устанавливаем состояние, что машина выбрана
     setTimeout(() => setIsMachineSelected(false), 500); // Устанавливаем состояние обратно через 0.5 секунды, чтобы вернуть машину на старое место
   };
 
   return (
     <Card variant="outlined" sx={{ Width: '90%', margin: '10px' }}>
-      <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0'  }}>
+      <Box sx={{ display: 'flex', paddingX: 2, backgroundColor: '#f0f0f0' }}>
         {/* Левая часть */}
         <Box sx={{ flex: '1 0 33%' }}>
           <Typography gutterBottom variant="h5" component="div">
@@ -36,7 +86,8 @@ export default function CalculatorCardAuto(): JSX.Element {
             <LocalShippingRoundedIcon
               sx={{
                 marginRight: 1,
-                animation: isMachineSelected ? 'moveOut 0.3s forwards' : null,
+                fontSize: '3.5rem',
+                animation: isMachineSelected ? 'moveOut 1.7s forwards' : null,
               }}
             />
           </Box>
@@ -53,13 +104,13 @@ export default function CalculatorCardAuto(): JSX.Element {
             {/* Кол-во машин начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
               <TextField
-                id="amount"
-                sx={{ backgroundColor: '#ffffff'}}
+                id="amountMachine"
+                sx={{ backgroundColor: '#ffffff' }}
                 label="Кол-во машин"
                 value={amount}
                 onChange={handleAmountChange}
@@ -69,7 +120,7 @@ export default function CalculatorCardAuto(): JSX.Element {
             {/* выбор машины начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '500px' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '310px' } }}
               noValidate
               autoComplete="off"
             >
@@ -78,7 +129,7 @@ export default function CalculatorCardAuto(): JSX.Element {
                 <Select
                   labelId="labelIdmachine"
                   id="machine"
-                  sx={{ backgroundColor: '#ffffff'}}
+                  sx={{ backgroundColor: '#ffffff' }}
                   value={machine}
                   label="Тип машины"
                   onChange={handleChange}
@@ -86,9 +137,9 @@ export default function CalculatorCardAuto(): JSX.Element {
                   <MenuItem value="">
                     <em>Выбрать</em>
                   </MenuItem>
-                  <MenuItem value={10}>Газель1</MenuItem>
-                  <MenuItem value={20}>Газель2</MenuItem>
-                  <MenuItem value={30}>Газель3</MenuItem>
+                  <MenuItem value={5000}>Газель 3 метра</MenuItem>
+                  <MenuItem value={6000}>Газель 4 метра</MenuItem>
+                  <MenuItem value={7000}>Газель 5 метров</MenuItem>
                 </Select>
                 <FormHelperText>Выбрать машину</FormHelperText>
               </FormControl>
@@ -96,49 +147,45 @@ export default function CalculatorCardAuto(): JSX.Element {
             {/* выбор машины конец */}
           </Box>
 
-            {/* Второй столбец */}
+          {/* Второй столбец */}
           <Box sx={{ flex: '1 0 50%', paddingLeft: 1, display: 'flex', flexDirection: 'column' }}>
-             {/* Время работы начало */}
+            {/* Время работы начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
               <TextField
                 id="time"
-                sx={{ backgroundColor: '#ffffff'}}
+                sx={{ backgroundColor: '#ffffff' }}
                 label="Время работы"
                 value={time}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setTime(event.target.value);
-                }}
+                onChange={handleTimeChange}
               />
             </Box>
             {/* Время работы конец */}
-              {/* Расстояние от МКАД начало */}
+            {/* Расстояние от МКАД начало */}
             <Box
               component="form"
-              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '40ch' } }}
+              sx={{ margin: '10px', '& > :not(style)': { m: 1, width: '35ch' } }}
               noValidate
               autoComplete="off"
             >
               <TextField
                 id="path"
-                sx={{ backgroundColor: '#ffffff'}}
+                sx={{ backgroundColor: '#ffffff' }}
                 label="Расстояние от МКАД"
                 value={path}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setPath(event.target.value);
-                }}
+                onChange={handlePathChange}
               />
             </Box>
-              {/* Расстояние от МКАД конец */}
+            {/* Расстояние от МКАД конец */}
           </Box>
         </Box>
       </Box>
-          {/* CSS анимация ухода машины за границы */}
-      <style jsx>{`
+      {/* CSS анимация ухода машины за границы */}
+      <style>{`
          @keyframes moveOut {
            0% {
              transform: translateX(0);
@@ -152,21 +199,3 @@ export default function CalculatorCardAuto(): JSX.Element {
     </Card>
   );
 }
-
-// {
-//   /* <Box mt={5} display="flex" flexDirection="column" justifyContent="center">
-//             <Box display="flex" flexDirection="row" justifyContent="center">
-//               <Button sx={{ margin: 1 }} variant="contained" onClick={() => dispatch(increment())}>
-//                 +
-//               </Button>
-
-//               <Button sx={{ margin: 1 }} variant="contained" onClick={() => dispatch(decrement())}>
-//                 -
-//               </Button>
-
-//             </Box>
-//             <Box mt={3} display="flex" flexDirection="row" justifyContent="center">
-//               <Typography variant="h4">{counterValue}</Typography>
-//             </Box>
-//           </Box> */
-// }

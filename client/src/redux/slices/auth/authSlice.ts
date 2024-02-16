@@ -2,15 +2,18 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import {
   checkUserThunk,
+  createUserThunk,
+  deleteUserThunk,
+  getUsersThunk,
   refreshTokenThunk,
   setAvatarThunk,
   signInThunk,
   signOutThunk,
 } from './authThunks';
-import type { UserStateType } from '../../../types/authTypes';
+import type { UserStateType, UserType } from '../../../types/authTypes';
 
-export type UserState = { accessToken: string; user: UserStateType };
-const initialState: UserState = { accessToken: '', user: { status: 'pending' } };
+export type UserState = { accessToken: string; user: UserStateType; users: UserType[] };
+const initialState: UserState = { accessToken: '', user: { status: 'pending' }, users: [] };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -61,6 +64,20 @@ const authSlice = createSlice({
       // Что будет если иф не сработает?
     });
     builder.addCase(setAvatarThunk.rejected, (state, action) => state);
+
+    builder.addCase(getUsersThunk.fulfilled, (state, action) => {
+      state.users = action.payload;
+    });
+    builder.addCase(getUsersThunk.rejected, (state, action) => state);
+    builder.addCase(deleteUserThunk.fulfilled, (state, action) => {
+      state.users = state.users.filter((user) => user.id !== action.payload);
+    });
+    builder.addCase(deleteUserThunk.rejected, (state, action) => state);
+
+    builder.addCase(createUserThunk.fulfilled, (state, action) => {
+      state.users = [action.payload, ...state.users];
+    });
+    builder.addCase(createUserThunk.rejected, (state, action) => state);
   },
 });
 

@@ -32,12 +32,11 @@ const tabContent = [
 ];
 const styleUl = {
   background: 'rgba(0, 0, 0, 0.5)',
-  borderRadius: ' 7px',
+  borderRadius: ' 30px',
   padding: '20px 10px',
   width: '400px',
 };
 const styleLi = {
-  padding: '0 0 0 20px',
   color: 'white',
   listStyle: 'none',
   fontSize: '20px',
@@ -73,27 +72,27 @@ export default function MainPage(): JSX.Element {
                 </div>
                 <ul style={styleUl} className="text-lg mb-8">
                   <li style={styleLi} className="flex items-center mb-4">
-                    Работаем на рынке мувинга с 2000 года
+                    &#10003; Работаем на рынке грузоперевозок с 2000 года
                   </li>
                   <li style={styleLi} className="flex items-center mb-4">
-                    Современный парк грузовых машин
+                    &#10003; Современный парк грузовых машин
                   </li>
                   <li style={styleLi} className="flex items-center mb-4">
-                    Только профессиональные грузчики
+                    &#10003; Только профессиональные грузчики
                   </li>
                   <li style={styleLi} className="flex items-center mb-4">
-                    Прозрачные и доступные цены
+                    &#10003; Прозрачные и доступные цены
                   </li>
                 </ul>
                 <div className="flex" style={{ display: 'flex' }}>
                   <OrderModal />
-                  <Button
+                  {/* <Button
                     variant="contained"
                     color="warning"
                     style={{ width: '100%', height: '100%', borderRadius: '20px' }}
                   >
                     Узнать цены
-                  </Button>
+                  </Button> */}
 
                   <Button
                     variant="contained"
@@ -102,7 +101,7 @@ export default function MainPage(): JSX.Element {
                       width: '100%',
                       height: '100%',
                       borderRadius: '20px',
-                      marginLeft: '30px',
+                      marginLeft: '9px',
                     }}
                     onClick={() => {
                       dispatch(setToggleOrderModal(true));
@@ -128,57 +127,142 @@ export default function MainPage(): JSX.Element {
           }}
         >
           <div>
-            <Tabs value={value} variant="fullWidth">
-              {tabContent.map((tab, index) => (
-                <Tab style={{ fontSize: '32px' }} key={index} label={tab.label} />
-              ))}
+            <Tabs
+              value={value}
+              variant="fullWidth"
+              onChange={(event, newValue) => setValue(newValue)}
+            >
+              <Tab style={{ fontSize: '32px' }} label={tabContent[0].label} />
+              <Tab style={{ fontSize: '32px' }} label={tabContent[1].label} />
+              <Tab style={{ fontSize: '32px' }} label={tabContent[2].label} />
             </Tabs>
 
             <div style={{ marginTop: '10px' }}>
-              {tabContent.map((tab, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    display: value === index ? 'block' : 'none',
+              <Box
+                sx={{
+                  display: value === 0 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      width: '100%',
-                      height: '300px',
-                      background: 'rgba(0, 0, 0, 0.04)',
-                      borderRadius: '20px',
-                    }}
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px' }}
+                      src={tabContent[0].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '100px', display: 'flex', alignItems: 'center' }}
                   >
-                    <Grid container justifyContent="space-between" alignItems="center">
-                      <Grid item xs={3}>
-                        <img
-                          style={{ borderRadius: '20px' }}
-                          src={tab.img}
-                          alt="description"
-                          width="440px"
-                        />
-                      </Grid>
-                      <div
-                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                      >
-                        <Grid item xs={6}>
-                          <div>
-                            <Typography variant="h5">{tab.text}</Typography>
-                          </div>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Button variant="contained" endIcon={tab.icon}>
-                            Button
-                          </Button>
-                        </Grid>
-                      </div>
-                    </Grid>
-                  </div>
-                </Box>
-              ))}
+                    <div>
+                      <Typography variant="h5">{tabContent[0].text}</Typography>
+                      {/* <Button variant="contained" endIcon={tabContent[0].icon}>
+                        Button
+                      </Button> */}
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
+
+              <Box
+                sx={{
+                  display: value === 1 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
+                  }}
+                >
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px' }}
+                      src={tabContent[1].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}
+                  >
+                    <div>
+                      <Typography variant="h5">{tabContent[1].text}</Typography>
+                      {/* <Button variant="contained" endIcon={tabContent[1].icon}>
+                        Button
+                      </Button> */}
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
+
+              <Box
+                sx={{
+                  display: value === 2 ? 'block' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    height: '300px',
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    borderRadius: '20px',
+                  }}
+                >
+                  {/* Контейнер для изображения */}
+                  <Grid item xs={3} style={{ position: 'relative', width: '300px' }}>
+                    <img
+                      style={{ borderRadius: '20px' }}
+                      src={tabContent[2].img}
+                      alt="description"
+                      width="300px"
+                      height="300px"
+                    />
+                  </Grid>
+
+                  {/* Контейнер для текста */}
+                  <Grid
+                    item
+                    xs={9}
+                    style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}
+                  >
+                    <div>
+                      <Typography variant="h5">{tabContent[2].text}</Typography>
+                      {/* <Button variant="contained" endIcon={tabContent[2].icon}>
+                        Button
+                      </Button> */}
+                    </div>
+                  </Grid>
+                </div>
+              </Box>
             </div>
           </div>
         </Box>
@@ -257,7 +341,7 @@ export default function MainPage(): JSX.Element {
           </Grid>
         </div>
 
-        <div className="text-lg mt-8" style={{ marginTop: '80px' }}>
+        <div className="text-lg mt-8" style={{ marginTop: '80px' , margin: '100px'}}>
           <Typography variant="h2" textAlign="center" gutterBottom>
             Этапы проведения переезда
           </Typography>
@@ -272,7 +356,7 @@ export default function MainPage(): JSX.Element {
                   flexDirection: 'column',
                 }}
               >
-                <PhonelinkRingTwoToneIcon sx={{ width: 100, height: 400 }} />
+                <PhonelinkRingTwoToneIcon sx={{ width: 100, height: 200 }} />
                 <Typography align="center" style={{ fontWeight: 'bold' }}>
                   Звоните нам по телефону или оставляйте онлайн-заявку на сайте.
                 </Typography>
@@ -288,7 +372,7 @@ export default function MainPage(): JSX.Element {
                   flexDirection: 'column',
                 }}
               >
-                <RequestQuoteTwoToneIcon sx={{ width: 100, height: 400 }} />
+                <RequestQuoteTwoToneIcon sx={{ width: 100, height: 200 }} />
                 <Typography align="center" style={{ fontWeight: 'bold' }}>
                   Проводим расчёт стоимости, оформляем заказ, подписываем договор.
                 </Typography>
@@ -304,7 +388,7 @@ export default function MainPage(): JSX.Element {
                   flexDirection: 'column',
                 }}
               >
-                <LocalShippingTwoToneIcon sx={{ width: 100, height: 400 }} />
+                <LocalShippingTwoToneIcon sx={{ width: 100, height: 200 }} />
                 <Typography align="center" style={{ fontWeight: 'bold' }}>
                   Выполняем переезд, если нужно разбираем-собираем, упаковываем, расставляем.
                 </Typography>
@@ -320,7 +404,7 @@ export default function MainPage(): JSX.Element {
                   flexDirection: 'column',
                 }}
               >
-                <RedeemTwoToneIcon sx={{ width: 100, height: 400 }} />
+                <RedeemTwoToneIcon sx={{ width: 100, height: 200 }} />
                 <Typography align="center" style={{ fontWeight: 'bold' }}>
                   Принимаете нашу работу и производите оплату удобным для Вас способом.
                 </Typography>

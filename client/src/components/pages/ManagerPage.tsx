@@ -8,16 +8,15 @@ import OrderCard from '../ui/OrderCard';
 
 export default function ManagerPage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const orders = useAppSelector((store) => store.orders);
+  const orders = useAppSelector((store) => store.orders.orders);
   useEffect(() => {
     void dispatch(getOrdersThunk());
   }, []);
-  console.log(orders);
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {orders.map((order) => (
-        <OrderCard order={order}/>
-      ))}
-    </List>
+<List sx={{ width: '100%', maxWidth: 560, bgcolor: 'background.paper', margin: 'auto', textAlign: 'center' }}>
+  {orders.map((order) => (
+    <OrderCard key={order.id} order={order}/>
+  ))}
+</List>
   );
 }

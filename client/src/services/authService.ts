@@ -30,8 +30,22 @@ class AuthService {
   // multer
 
   static async setAvatar(formData): Promise<UserType> {
-    const {data} = await authApiService.patch<UserType>('/auth/avatar', formData)
-    return data
+    const { data } = await authApiService.patch<UserType>('/auth/avatar', formData);
+    return data;
+  }
+
+  static async getUsers(): Promise<UserType[]> {
+    const { data } = await authApiService<UserType[]>('/auth');
+    return data;
+  }
+
+  static async deleteUser(id: UserType['id']): Promise<AxiosResponse> {
+    return authApiService.delete(`/auth/${id}`);
+  }
+
+  static async createUser(formData: UserSignInType): Promise<UserType> {
+    const { data } = await authApiService.post<UserType>('/auth', formData);
+    return data;
   }
 }
 

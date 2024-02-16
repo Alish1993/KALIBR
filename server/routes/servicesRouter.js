@@ -12,6 +12,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const serviceFromCalculator = await Service.create(req.body);
+    return res.json(serviceFromCalculator);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const service = await Service.findOne({ where: { id: req.params.id } });
@@ -21,5 +30,6 @@ router.get('/:id', async (req, res) => {
     return res.sendStatus(500);
   }
 });
+
 
 module.exports = router;
