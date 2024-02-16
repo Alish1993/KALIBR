@@ -15,20 +15,6 @@ export default function CalculatorPage(): JSX.Element {
   console.log(typeof serviceData.machine, 'тип данных для типа машины');
   console.log(serviceData.machine, 'значение для типа машины');
 
-  // const calculateTotalCost = () => {
-  //   let totalCost = 0;
-
-  //   for (const key in serviceData) {
-  //     if (!isNaN(serviceData[key]) /*|| serviceData.machine !== ''*/) {
-  //       totalCost += Number(serviceData[key]);
-  //     }
-  //   }
-
-  //   return totalCost;
-  // };
-
-  // const totalCost = calculateTotalCost();
-
 // работает !!!!!!!!!!!!!!!!!!!
 const calculateTotalCost = (serviceData) => {
   let totalCost = 0;
@@ -59,6 +45,8 @@ const calculateTotalCost = (serviceData) => {
 };
 const totalCost = calculateTotalCost(serviceData);
 // работает !!!!!!!!!!!!!!!!!!!
+
+
 
   return (
     <Box>

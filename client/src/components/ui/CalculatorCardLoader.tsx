@@ -24,29 +24,6 @@ export default function CalculatorCardLoader(): JSX.Element {
     setTimeout(() => setIsLoaderSelected(false), 300);
   };
 
-//   const handleChangeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
-//   const amountValue = event.target.value;
-//   setAmountLoader(amountValue);
-
-//   // Устанавливаем значение времени работы равным 4, если выбран 1 грузчик
-//   if (parseInt(amountValue) === 1) {
-//     setTimeloader('4');
-//     const formData: CalculatorTypeNoId = {
-//       amountLoader: parseInt(amountValue),
-//       workTime: 4, // Установка значения времени работы в 4 часа
-//     };
-//     dispatch(formServiceObject(formData));
-//   } else {
-//     setTimeloader(''); // Сбрасываем значение времени работы, если выбрано больше 1 грузчика
-//     const formData: CalculatorTypeNoId = {
-//       amountLoader: parseInt(amountValue),
-//     };
-//     dispatch(formServiceObject(formData));
-//   }
-
-//   setIsLoaderSelected(true);
-//   setTimeout(() => setIsLoaderSelected(false), 300);
-// };
 
   const handleChangeTimeLoader = (event: React.ChangeEvent<HTMLInputElement>) => {
     const timeValue = event.target.value;
